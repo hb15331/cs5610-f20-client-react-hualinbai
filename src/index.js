@@ -1,17 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
-import "font-awesome/css/font-awesome.css"
-import CourseListComponent from "./components/CourseListComponent";
+import "font-awesome/css/font-awesome.min.css";
 import * as serviceWorker from './serviceWorker';
+
+import CourseManagerComponent from "./components/CourseManagerComponent";
 
 
 ReactDOM.render(
-
-
-    <div className = "container">
-        <CourseListComponent instructor = "Hualin Bai" term = "Fall 2020"/>
-    </div>,
+    <CourseManagerComponent/>,
     document.getElementById('root')
 );
 

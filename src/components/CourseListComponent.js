@@ -1,6 +1,7 @@
 import React from 'react';
 import CourseRowComponent from "./CourseRowComponent";
 import {findAllCourses, updateCourse, deleteCourse, createCourse} from "../services/CourseService"
+import {Link} from "react-router-dom";
 
 
 class CourseListComponent extends React.Component {
@@ -62,8 +63,11 @@ class CourseListComponent extends React.Component {
                 <th className="d-none d-sm-table-cell">Owned by</th>
                 <th className="d-none d-sm-table-cell">Last Modified</th>
                 <th className="d-none d-sm-table-cell">
-                    <a href="#"><i className="fa fa-th"></i></a>
-                    <a className="ml-2" href="#"><i className="fa fa-sort"></i></a>
+                    <a href="#"><i className="fa fa-table"></i></a>
+                    <a className="ml-2" href="#"><i className="fa fa-sort-alpha-desc"></i></a>
+
+                    <Link className="ml-2" to="/grid"><i className="fa fa-th"></i></Link>
+
                 </th>
             </tr>
             </thead>
@@ -72,8 +76,6 @@ class CourseListComponent extends React.Component {
             {
                 this.state.courses.map(course =>
                     <CourseRowComponent
-                        courseBeingEdited={this.state.courseBeingEdited}
-                        editCourse={this.editCourse}
                         deleteCourse={this.deleteCourse}
                         course={course}/>
                 )
