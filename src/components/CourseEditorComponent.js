@@ -23,7 +23,7 @@ export default class CourseEditorComponent extends React.Component{
         return (
         <div>
             <h2 className="my-3">
-                <Link to="/courses"><i className="fa fa-home"/></Link>
+                <Link to="/"><i className="fa fa-home"/></Link>
                 {this.state.course.title}
             </h2>
 

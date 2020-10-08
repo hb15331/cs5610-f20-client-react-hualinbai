@@ -51,7 +51,7 @@ export default class CourseManagerComponent extends React.Component {
                         <Route path="/login" exact component={Login}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/profile" exact component={Profile}/>
-                        <Route path="/courses" exact>
+                        <Route path="/" exact>
                             <CourseListComponent
                                 instructor="Jose"
                                 term="Fall 2020"
@@ -65,7 +65,7 @@ export default class CourseManagerComponent extends React.Component {
                         </Route>
                     </div>
 
-                    <Route path={["/courses", "/grid"]} exact component={CourseNavbarComponent}/>
+                    <Route path={["/", "/grid"]} exact component={CourseNavbarComponent}/>
 
                 </BrowserRouter>
             </div>

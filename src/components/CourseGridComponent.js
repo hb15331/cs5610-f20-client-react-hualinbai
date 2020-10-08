@@ -46,7 +46,7 @@ export default class CourseGridComponent extends React.Component {
         return (
             <div>
 
-            <table className="table mt-5">
+            <table className="table" style={{marginTop: "60px"}}>
             <thead>
             <tr>
                 <th className="d-none d-sm-table-cell">Recent documents</th>

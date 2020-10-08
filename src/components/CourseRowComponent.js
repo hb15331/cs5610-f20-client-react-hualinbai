@@ -10,7 +10,6 @@ export default class CourseRowComponent extends React.Component {
         course: this.props.course
     }
 
-
     render() {
         return (
         <tr>
@@ -55,7 +54,9 @@ export default class CourseRowComponent extends React.Component {
                         onClick={() =>
                             //this.setState({editing: false})
                             updateCourse(this.state.course._id, this.state.course)
-                                .then(status => this.setState({editing: false}))
+                                .then(status => this.setState({
+                                    editing: false
+                                }))
                         }
                         className="btn btn-link">
                         <i className="fa fa-check"/>

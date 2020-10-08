@@ -49,17 +49,17 @@ class CourseListComponent extends React.Component {
             })))
     }
 
-    editCourse = (course) => {
-        this.setState({
-            courseBeingEdited: course
-        })
-    }
+    // editCourse = (course) => {
+    //     this.setState({
+    //         courseBeingEdited: course
+    //     })
+    // }
 
     render() {
         return (
             <div>
 
-            <table className="table mt-5">
+            <table className="table" style={{marginTop: "60px"}}>
 
             <thead>
             <tr>
