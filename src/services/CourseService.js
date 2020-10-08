@@ -1,6 +1,6 @@
 
-const url = "http://wbdv-generic-server.herokuapp.com/api/jannunzi/courses";
-
+//const url = "http://wbdv-generic-server.herokuapp.com/api/jannunzi/courses";
+const url = "http://wbdv-generic-server.herokuapp.com/api/hualin/courses";
 
 export const findAllCourses = () =>
     fetch(url)

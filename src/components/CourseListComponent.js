@@ -8,8 +8,7 @@ class CourseListComponent extends React.Component {
 
     // invoke the render() whenever the state is changed
     state = {
-        courses: [], // maintain the local state of array
-        courseBeingEdited: {} // flag the course being edited
+        courses: []
     }
 
     componentDidMount() {
@@ -20,6 +19,11 @@ class CourseListComponent extends React.Component {
                 })
             })
     }
+
+    // componentDidMount() {
+    //     this.setState({courses: this.props.courses})
+    // }
+
 
     deleteCourse = (course) => {
         deleteCourse(course._id)
@@ -54,8 +58,8 @@ class CourseListComponent extends React.Component {
     render() {
         return (
             <div>
-            <h1>Course List (For {this.props.instructor}) {this.props.term}</h1>
-            <table className="table">
+
+            <table className="table mt-5">
 
             <thead>
             <tr>
@@ -63,11 +67,8 @@ class CourseListComponent extends React.Component {
                 <th className="d-none d-sm-table-cell">Owned by</th>
                 <th className="d-none d-sm-table-cell">Last Modified</th>
                 <th className="d-none d-sm-table-cell">
-                    <a href="#"><i className="fa fa-table"></i></a>
-                    <a className="ml-2" href="#"><i className="fa fa-sort-alpha-desc"></i></a>
-
-                    <Link className="ml-2" to="/grid"><i className="fa fa-th"></i></Link>
-
+                    <Link to="/grid"><i className="fa fa-th"/></Link>
+                    <a className="ml-2" href="#"><i className="fa fa-sort-alpha-asc"/></a>
                 </th>
             </tr>
             </thead>
@@ -82,9 +83,10 @@ class CourseListComponent extends React.Component {
             }
             </tbody>
             </table>
-            <button className="btn btn-success" onClick={this.addCourse}>
-                Add Course
-            </button>
+            <button
+                className="btn btn-success"
+                style={{position: "fixed", bottom: 0, right: 0}}
+                onClick={this.addCourse}><i className="fa fa-plus-circle"/></button>
             </div>
         );
     }

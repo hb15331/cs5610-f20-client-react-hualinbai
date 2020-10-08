@@ -10,6 +10,7 @@ export default class CourseRowComponent extends React.Component {
         course: this.props.course
     }
 
+
     render() {
         return (
         <tr>
@@ -33,7 +34,7 @@ export default class CourseRowComponent extends React.Component {
                 {
                     !this.state.editing &&
                     <Link to={`/edit/${this.props.course._id}`}>
-                        {this.props.course.title} {this.props.course._id}
+                        {this.props.course.title}
                     </Link>
                 }
             </td>
@@ -45,7 +46,7 @@ export default class CourseRowComponent extends React.Component {
                     <button
                         onClick={() => this.setState({editing: true})}
                         className="btn btn-link">
-                        <i className="fa fa-pencil"></i>
+                        <i className="fa fa-pencil"/>
                     </button>
                 }
                 {
@@ -57,14 +58,14 @@ export default class CourseRowComponent extends React.Component {
                                 .then(status => this.setState({editing: false}))
                         }
                         className="btn btn-link">
-                        <i className="fa fa-check"></i>
+                        <i className="fa fa-check"/>
                     </button>
                 }
 
                 <button
                     onClick={() => this.props.deleteCourse(this.props.course)}
                     className="btn btn-link">
-                    <i className="fa fa-trash"></i>
+                    <i className="fa fa-trash"/>
                 </button>
             </td>
         </tr>
