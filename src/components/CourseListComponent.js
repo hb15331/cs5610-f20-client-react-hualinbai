@@ -7,51 +7,51 @@ import {Link} from "react-router-dom";
 class CourseListComponent extends React.Component {
 
     // invoke the render() whenever the state is changed
-    state = {
-        courses: []
-    }
+    // state = {
+    //     courses: []
+    // }
 
-    componentDidMount() {
-        findAllCourses()
-            .then(courses => {
-                this.setState({courses: courses})
-            })
-    }
+    // componentDidMount() {
+    //     findAllCourses()
+    //         .then(courses => {
+    //             this.setState({courses: courses})
+    //         })
+    // }
 
     // update the local state with the courses data on the server
-    updateRowCourses = () => {
-        findAllCourses()
-            .then(courses => {
-                this.setState({
-                    courses: courses
-                })
-            })
-    }
+    // updateRowCourses = () => {
+    //     findAllCourses()
+    //         .then(courses => {
+    //             this.setState({
+    //                 courses: courses
+    //             })
+    //         })
+    // }
 
 
-    deleteCourse = (course) => {
-        deleteCourse(course._id)
-            .then(status => this.setState(prevState => ({
-                // create a new array of courses, where the course that matches
-                // the specified id is removed
-                courses: prevState.courses.filter(c => c._id !== course._id)
-                })
-            ))
-    }
+    // deleteCourse = (course) => {
+    //     deleteCourse(course._id)
+    //         .then(status => this.setState(prevState => ({
+    //             // create a new array of courses, where the course that matches
+    //             // the specified id is removed
+    //             courses: prevState.courses.filter(c => c._id !== course._id)
+    //             })
+    //         ))
+    // }
 
-    addCourse = () => {
-        const newCourse = {
-            title: "New Course",
-            owner: "me",
-            modified: (new Date()).toDateString()
-        }
-        createCourse(newCourse)
-            .then(actualCourse => this.setState(prevState => ({
-                courses: [
-                    ...prevState.courses, actualCourse
-                ]
-            })))
-    }
+    // addCourse = () => {
+    //     const newCourse = {
+    //         title: "New Course",
+    //         owner: "me",
+    //         modified: (new Date()).toDateString()
+    //     }
+    //     createCourse(newCourse)
+    //         .then(actualCourse => this.setState(prevState => ({
+    //             courses: [
+    //                 ...prevState.courses, actualCourse
+    //             ]
+    //         })))
+    // }
 
 
     render() {
@@ -74,10 +74,10 @@ class CourseListComponent extends React.Component {
 
             <tbody>
             {
-                this.state.courses.map(course =>
+                this.props.courses.map(course =>
                     <CourseRowComponent
-                        deleteCourse={this.deleteCourse}
-                        updateRowCourses={this.updateRowCourses}
+                        deleteCourse={this.props.deleteCourse}
+                        updateRowCourses={this.props.updateRowCourses}
                         key={course._id}
                         course={course}/>
                 )
@@ -87,7 +87,7 @@ class CourseListComponent extends React.Component {
             <button
                 className="btn btn-success"
                 style={{position: "fixed", bottom: 0, right: 0}}
-                onClick={this.addCourse}><i className="fa fa-plus-circle"/></button>
+                onClick={this.props.addCourse}><i className="fa fa-plus-circle"/></button>
             </div>
         );
     }
