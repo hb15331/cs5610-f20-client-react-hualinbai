@@ -41,9 +41,9 @@ export default class CourseGridComponent extends React.Component {
     deleteCourse = (course) => {
         deleteCourse(course._id)
             .then(status => this.setState(prevState => ({
-                    // create a new array of courses, where the course that matches
-                    // the specified id is removed
-                    courses: prevState.courses.filter(c => c._id !== course._id)
+                // create a new array of courses, where the course that matches
+                // the specified id is removed
+                courses: prevState.courses.filter(c => c._id !== course._id)
                 })
             ))
     }
@@ -67,12 +67,12 @@ export default class CourseGridComponent extends React.Component {
 
             <div className="card-deck mt-5">
                 {
-                    this.state.courses.map((course, key) =>
+                    this.state.courses.map((course) =>
                         <CourseCardComponent
                             course={course}
                             deleteCourse={this.deleteCourse}
                             updateRowCourses={this.updateRowComponent}
-                            key={key}/>
+                            key={course._id}/>
                     )
                 }
             </div>

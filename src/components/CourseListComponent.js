@@ -78,6 +78,7 @@ class CourseListComponent extends React.Component {
                     <CourseRowComponent
                         deleteCourse={this.deleteCourse}
                         updateRowCourses={this.updateRowCourses}
+                        key={course._id}
                         course={course}/>
                 )
             }
