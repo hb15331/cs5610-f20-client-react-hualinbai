@@ -52,7 +52,7 @@ export default class CourseGridComponent extends React.Component {
                 <th className="d-none d-sm-table-cell">Recent documents</th>
                 <th className="d-none d-sm-table-cell">Owned by me</th>
                 <th className="d-none d-sm-table-cell">
-                    <Link to="/courses"><i className="fa fa-list"/></Link>
+                    <Link to="/"><i className="fa fa-list"/></Link>
                     <a className="ml-2" href="#"><i className="fa fa-sort-alpha-asc"/></a>
                 </th>
             </tr>

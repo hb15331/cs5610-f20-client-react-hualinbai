@@ -9,6 +9,7 @@ import CourseGridComponent from "./CourseGridComponent";
 import {deleteCourse, findAllCourses} from "../services/CourseService";
 import CourseNavbarComponent from "./CourseNavbarComponent";
 
+
 export default class CourseManagerComponent extends React.Component {
 
     state = {
@@ -43,11 +44,6 @@ export default class CourseManagerComponent extends React.Component {
                 <BrowserRouter>
 
                     <div className = "container">
-                        {/*<Link to="/login">Login</Link> |*/}
-                        {/*<Link to="/register">Register</Link> |*/}
-                        {/*<Link to="/profile">Profile</Link> |*/}
-                        {/*<Link to="/courses">Courses</Link>*/}
-
                         <Route path="/login" exact component={Login}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/profile" exact component={Profile}/>

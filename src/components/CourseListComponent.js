@@ -20,9 +20,15 @@ class CourseListComponent extends React.Component {
             })
     }
 
-    // componentDidMount() {
-    //     this.setState({courses: this.props.courses})
-    // }
+    // update the state with the latest data stored on server
+    fetchRowComponent = () => {
+        findAllCourses()
+            .then(courses => {
+                this.setState({
+                    courses: courses
+                })
+            })
+    }
 
 
     deleteCourse = (course) => {
@@ -49,11 +55,6 @@ class CourseListComponent extends React.Component {
             })))
     }
 
-    // editCourse = (course) => {
-    //     this.setState({
-    //         courseBeingEdited: course
-    //     })
-    // }
 
     render() {
         return (
@@ -78,6 +79,7 @@ class CourseListComponent extends React.Component {
                 this.state.courses.map(course =>
                     <CourseRowComponent
                         deleteCourse={this.deleteCourse}
+                        fetchRowComponent={this.fetchRowComponent}
                         course={course}/>
                 )
             }
