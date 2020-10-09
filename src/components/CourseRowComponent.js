@@ -34,7 +34,7 @@ export default class CourseRowComponent extends React.Component {
                 {   // if editing state becomes false, hides the field and shows the course title
                     !this.state.editing &&
                     <Link to={`/edit/${this.props.course._id}`}>
-                        {this.props.course.title}
+                        {this.props.course.title} {this.props.course._id}
                     </Link>
                 }
             </td>
@@ -57,7 +57,7 @@ export default class CourseRowComponent extends React.Component {
                             updateCourse(this.state.course._id, this.state.course)
                                 .then(status => {
                                     // update the local state of all courses
-                                    this.props.fetchRowComponent()
+                                    this.props.updateRowCourses()
                                     this.setState({editing: false})
                                 })
                         }
@@ -67,6 +67,8 @@ export default class CourseRowComponent extends React.Component {
                 }
 
                 <button
+                    // deleteCourse passed by parent component
+                    // the result is to remove a row from CourseListComponent
                     onClick={() => this.props.deleteCourse(this.props.course)}
                     className="btn btn-link">
                     <i className="fa fa-trash"/>

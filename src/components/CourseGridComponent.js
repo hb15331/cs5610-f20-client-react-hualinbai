@@ -11,6 +11,12 @@ export default class CourseGridComponent extends React.Component {
         courses: []
     }
 
+    updateRowComponent = () => {
+        findAllCourses()
+            .then(courses => this.setState({courses: courses}))
+    }
+
+
     componentDidMount() {
         findAllCourses()
             .then(courses => {
@@ -27,7 +33,7 @@ export default class CourseGridComponent extends React.Component {
         createCourse(newCourse)
             .then(actualCourse => this.setState(prevState => ({
                 courses: [
-                    ...prevState.courses, newCourse
+                    ...prevState.courses, actualCourse
                 ]
             })))
     }
@@ -62,7 +68,11 @@ export default class CourseGridComponent extends React.Component {
             <div className="card-deck mt-5">
                 {
                     this.state.courses.map((course, key) =>
-                        <CourseCardComponent course={course} deleteCourse={this.deleteCourse} key={key}/>
+                        <CourseCardComponent
+                            course={course}
+                            deleteCourse={this.deleteCourse}
+                            updateRowCourses={this.updateRowComponent}
+                            key={key}/>
                     )
                 }
             </div>

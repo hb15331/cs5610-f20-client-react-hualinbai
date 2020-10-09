@@ -1,41 +1,15 @@
 import React from "react";
-import {BrowserRouter, Link, Route} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import Profile from "./Profile";
 import CourseListComponent from "./CourseListComponent";
 import CourseEditorComponent from "./CourseEditorComponent";
 import CourseGridComponent from "./CourseGridComponent";
-import {deleteCourse, findAllCourses} from "../services/CourseService";
 import CourseNavbarComponent from "./CourseNavbarComponent";
 
 
 export default class CourseManagerComponent extends React.Component {
-
-    state = {
-        // maintain the local state of array
-        // pass the same state of courses to table or grid component
-        courses: []
-    }
-
-    // componentDidMount() {
-    //     findAllCourses()
-    //         .then(courses => {
-    //             this.setState({
-    //                 courses: courses
-    //             })
-    //         })
-    // }
-
-    // deleteCourse = (course) => {
-    //     deleteCourse(course._id)
-    //         .then(status => this.setState(prevState => ({
-    //                 // create a new array of courses, where the course that matches
-    //                 // the specified id is removed
-    //                 courses: prevState.courses.filter(c => c._id !== course._id)
-    //             })
-    //         ))
-    // }
 
 
     render() {
@@ -48,16 +22,12 @@ export default class CourseManagerComponent extends React.Component {
                         <Route path="/register" exact component={Register}/>
                         <Route path="/profile" exact component={Profile}/>
                         <Route path="/" exact>
-                            <CourseListComponent
-                                instructor="Jose"
-                                term="Fall 2020"
-                                courses={this.state.courses}/>
+                            <CourseListComponent/>
                         </Route>
                         <Route path="/edit/:courseId" exact component={CourseEditorComponent}/>
 
-                        {/*<Route path="/grid" exact component={CourseGridComponent}/>*/}
                         <Route path="/grid" exact>
-                            <CourseGridComponent courses={this.state.courses}/>
+                            <CourseGridComponent/>
                         </Route>
                     </div>
 

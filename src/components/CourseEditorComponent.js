@@ -98,7 +98,7 @@ export default class CourseEditorComponent extends React.Component{
                     <div className="mt-3 d-flex align-items-center">
                         <button className="btn btn-success">Save</button>
                         <span className="ml-3 mr-1">Preview</span>
-                        <a href="#"><i className="fa fa-toggle-on fa-2x"></i></a>
+                        <a href="#"><i className="fa fa-toggle-on fa-2x"/></a>
                     </div>
 
                     <form className="form-inline my-3">
@@ -112,11 +112,9 @@ export default class CourseEditorComponent extends React.Component{
                                 <option>List</option>
                             </select>
                         </div>
-                        <button type="submit" className="btn btn-warning ml-2"><i className="fa fa-arrow-up"></i>
-                        </button>
-                        <button type="submit" className="btn btn-warning ml-2"><i className="fa fa-arrow-down"></i>
-                        </button>
-                        <button type="submit" className="btn btn-danger ml-2"><i className="fa fa-trash"></i></button>
+                        <button type="submit" className="btn btn-warning ml-2"><i className="fa fa-arrow-up"/></button>
+                        <button type="submit" className="btn btn-warning ml-2"><i className="fa fa-arrow-down"/></button>
+                        <button type="submit" className="btn btn-danger ml-2"><i className="fa fa-trash"/></button>
                     </form>
 
                     <form>

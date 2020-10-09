@@ -1,6 +1,6 @@
 import React from 'react';
 import CourseRowComponent from "./CourseRowComponent";
-import {findAllCourses, updateCourse, deleteCourse, createCourse} from "../services/CourseService"
+import {findAllCourses, deleteCourse, createCourse} from "../services/CourseService"
 import {Link} from "react-router-dom";
 
 
@@ -14,14 +14,12 @@ class CourseListComponent extends React.Component {
     componentDidMount() {
         findAllCourses()
             .then(courses => {
-                this.setState({
-                    courses: courses
-                })
+                this.setState({courses: courses})
             })
     }
 
-    // update the state with the latest data stored on server
-    fetchRowComponent = () => {
+    // update the local state with the courses data on the server
+    updateRowCourses = () => {
         findAllCourses()
             .then(courses => {
                 this.setState({
@@ -50,7 +48,7 @@ class CourseListComponent extends React.Component {
         createCourse(newCourse)
             .then(actualCourse => this.setState(prevState => ({
                 courses: [
-                    ...prevState.courses, newCourse
+                    ...prevState.courses, actualCourse
                 ]
             })))
     }
@@ -79,7 +77,7 @@ class CourseListComponent extends React.Component {
                 this.state.courses.map(course =>
                     <CourseRowComponent
                         deleteCourse={this.deleteCourse}
-                        fetchRowComponent={this.fetchRowComponent}
+                        updateRowCourses={this.updateRowCourses}
                         course={course}/>
                 )
             }

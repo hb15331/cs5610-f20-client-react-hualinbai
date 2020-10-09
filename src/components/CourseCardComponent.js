@@ -50,7 +50,10 @@ export default class CourseCardComponent extends React.Component {
                             onClick={() =>
                                 //this.setState({editing: false})
                                 updateCourse(this.state.course._id, this.state.course)
-                                    .then(status => this.setState({editing: false}))
+                                    .then(status => {
+                                        this.props.updateRowCourses()
+                                        this.setState({editing: false})
+                                    })
                             }
                             className="btn btn-link">
                             <i className="fa fa-check"/>

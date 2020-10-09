@@ -9,7 +9,7 @@ const CourseNavbarComponent = () =>
                 type="button"
                 data-toggle="collapse"
                 data-target="#hidden-dropdown">
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"/>
         </button>
 
         <div className="collapse navbar-collapse"
@@ -18,21 +18,21 @@ const CourseNavbarComponent = () =>
                 <li className="nav-item active">
                     <a className="nav-link" href="#">Home</a></li>
                 <li className="nav-item">
-                    <a className="nav-link" href="login/login.template.client.html">Log in</a></li>
+                    <a className="nav-link" href="#">Log in</a></li>
                 <li className="nav-item">
-                    <a className="nav-link" href="user-admin/user-admin.template.client.html">User Admin</a></li>
+                    <a className="nav-link" href="#">User Admin</a></li>
             </ul>
         </div>
 
         <form className="form-inline">
-            <label htmlFor="title-fld" className="wbdv-label wbdv-course-manager"></label>
+            <label htmlFor="title-fld" className="wbdv-label wbdv-course-manager"/>
             <div className="input-group">
                 <input type="text"
                        id="title-fld"
                        className="form-control wbdv-field wbdv-new-course"
                        placeholder="New course title"/>
                     <div className="input-group-append">
-                        <button className="btn btn-success wbdv-button wbdv-add-course" type="submit">+</button>
+                        <button className="btn btn-success">+</button>
                     </div>
             </div>
         </form>
