@@ -79,7 +79,7 @@ export default class CourseGridComponent extends React.Component {
 
             <button className="btn btn-success"
                     style={{position: "fixed", bottom: 0, right: 0}}
-                    onClick={this.props.addCourse}><i className="fa fa-plus-circle"/></button>
+                    onClick={() => this.props.addCourse("add from grid")}><i className="fa fa-plus-circle"/></button>
 
             </div>
         )

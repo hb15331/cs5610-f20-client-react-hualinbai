@@ -47,9 +47,10 @@ export default class CourseManagerComponent extends React.Component {
     }
 
 
-    addCourse = () => {
+    addCourse = (newTitle) => {
         const newCourse = {
-            title: "New Course",
+            //title: "New Course",
+            title: newTitle,
             owner: "me",
             modified: (new Date()).toDateString()
         }
@@ -89,7 +90,10 @@ export default class CourseManagerComponent extends React.Component {
                         </Route>
                     </div>
 
-                    <Route path={["/", "/grid"]} exact component={CourseNavbarComponent}/>
+                    {/*<Route path={["/", "/grid"]} exact component={CourseNavbarComponent}/>*/}
+                    <Route path={["/", "/grid"]} exact>
+                        <CourseNavbarComponent addCourse={this.addCourse}/>
+                    </Route>
 
                 </BrowserRouter>
             </div>
