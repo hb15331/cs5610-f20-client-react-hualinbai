@@ -33,19 +33,18 @@ export default class CourseCardComponent extends React.Component {
                     <Link className="btn btn-primary"
                           to={`/edit/${this.props.course._id}`}>More...</Link>
 
-                    <button
-                        onClick={() => this.props.deleteCourse(this.props.course)}
-                        className="btn btn-link">
-                        <i className="fa fa-trash"/>
-                    </button>
-
                     {
                         !this.state.editing &&
+                        <div>
                         <button
                             onClick={() => this.setState({editing: true})}
                             className="btn btn-link">
-                            <i className="fa fa-pencil"/>
-                        </button>
+                            <i className="fa fa-pencil"/></button>
+                        <button
+                        onClick={() => this.props.deleteCourse(this.props.course)}
+                        className="btn btn-link">
+                            <i className="fa fa-trash"/></button>
+                        </div>
                     }
                     {
                         this.state.editing &&

@@ -37,11 +37,6 @@ class CourseListComponent extends React.Component {
             </tbody>
             </table>
 
-            {/*<button*/}
-            {/*    className="btn btn-success"*/}
-            {/*    style={{position: "fixed", bottom: 0, right: 0}}*/}
-            {/*    onClick={() => this.props.addCourse("add from table")}><i className="fa fa-plus-circle"/></button>*/}
-
             </div>
         );
     }
