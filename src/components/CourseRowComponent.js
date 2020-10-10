@@ -38,8 +38,8 @@ export default class CourseRowComponent extends React.Component {
                     </Link>
                 }
             </td>
-            <td>{this.props.course.owner}</td>
-            <td>{this.props.course.modified}</td>
+            <td className="d-none d-sm-table-cell">{this.props.course.owner}</td>
+            <td className="d-none d-lg-table-cell">{this.props.course.modified}</td>
             <td>
                 {   // if editing state becomes false, shows the pencil button
                     !this.state.editing &&

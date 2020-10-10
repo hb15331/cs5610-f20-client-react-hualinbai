@@ -3,11 +3,6 @@ import React from "react";
 export default class CourseNavbarComponent extends React.Component {
 
     state = {
-        // course: {
-        //     title: "New Course",
-        //     owner: "me",
-        //     modified: (new Date()).toDateString()
-        // }
         title: "New Course"
     }
 
@@ -44,9 +39,6 @@ export default class CourseNavbarComponent extends React.Component {
                                className="form-control"
                                onChange={(e) => {
                                    const newTitle = e.target.value
-                                   // this.setState(prevState => ({
-                                   //     course: {...prevState.course, title: newTitle}
-                                   // }))
                                    this.setState({title: newTitle})
                                }}
                                // value={this.state.title}
@@ -61,6 +53,11 @@ export default class CourseNavbarComponent extends React.Component {
                 </form>
 
             </nav>
+
+            <button className="btn btn-success"
+                    style={{position: "fixed", bottom: 0, right: 0}}
+                    onClick={() => this.props.addCourse(this.state.title)}><i className="fa fa-plus-circle"/></button>
+
         </div>
 
         )

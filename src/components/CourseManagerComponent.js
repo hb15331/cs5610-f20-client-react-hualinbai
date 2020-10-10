@@ -90,7 +90,6 @@ export default class CourseManagerComponent extends React.Component {
                         </Route>
                     </div>
 
-                    {/*<Route path={["/", "/grid"]} exact component={CourseNavbarComponent}/>*/}
                     <Route path={["/", "/grid"]} exact>
                         <CourseNavbarComponent addCourse={this.addCourse}/>
                     </Route>
