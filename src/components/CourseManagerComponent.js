@@ -1,8 +1,5 @@
 import React from "react";
 import {BrowserRouter, Route} from "react-router-dom";
-import Login from "./Login";
-import Register from "./Register";
-import Profile from "./Profile";
 import CourseListComponent from "./CourseListComponent";
 import CourseEditorComponent from "./CourseEditorComponent";
 import CourseGridComponent from "./CourseGridComponent";
@@ -69,9 +66,6 @@ export default class CourseManagerComponent extends React.Component {
                 <BrowserRouter>
 
                     <div className = "container">
-                        <Route path="/login" exact component={Login}/>
-                        <Route path="/register" exact component={Register}/>
-                        <Route path="/profile" exact component={Profile}/>
                         <Route path="/" exact>
                             <CourseListComponent
                                 courses={this.state.courses}

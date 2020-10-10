@@ -27,6 +27,9 @@ export default class CourseCardComponent extends React.Component {
                     <p className="card-text">
                         Course ID: {this.state.course._id}
                     </p>
+                    <p className="card-text">
+                        Modified: {this.state.course.modified}
+                    </p>
                     <Link className="btn btn-primary"
                           to={`/edit/${this.props.course._id}`}>More...</Link>
 
@@ -48,7 +51,6 @@ export default class CourseCardComponent extends React.Component {
                         this.state.editing &&
                         <button
                             onClick={() =>
-                                //this.setState({editing: false})
                                 updateCourse(this.state.course._id, this.state.course)
                                     .then(status => {
                                         this.props.updateRowCourses()

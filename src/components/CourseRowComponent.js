@@ -34,7 +34,7 @@ export default class CourseRowComponent extends React.Component {
                 {   // if editing state becomes false, hides the field and shows the course title
                     !this.state.editing &&
                     <Link to={`/edit/${this.props.course._id}`}>
-                        {this.props.course.title} {this.props.course._id}
+                        {this.props.course.title}
                     </Link>
                 }
             </td>
