@@ -1,6 +1,8 @@
 import React from "react";
 import {findCourseById} from "../services/CourseService";
 import {Link} from "react-router-dom";
+import WidgetList from "./WidgetList";
+import WidgetListContainer from "../containers/WidgetListContainer";
 
 export default class CourseEditorComponent extends React.Component{
 
@@ -27,48 +29,52 @@ export default class CourseEditorComponent extends React.Component{
                 {this.state.course.title}
             </h2>
 
+
             <div className="row">
                 <div className="col-4">
-                    <ul className="list-group wbdv-module-list">
-                        <li className="list-group-item wbdv-module-item">
-                            <span className="wbdv-module-item-title">Module 1</span>
-                            <a href="#">
-                                <i className="fa fa-close pull-right"/></a>
-                        </li>
-                        <li className="list-group-item wbdv-module-item">
-                            <span className="wbdv-module-item-title">Module 2</span>
-                            <a href="#">
-                                <i className="fa fa-close pull-right"/></a>
-                        </li>
-                        <li className="list-group-item active wbdv-module-item">
-                            <span className="wbdv-module-item-title">Module 3</span>
-                            <a href="#">
-                                <i className="fa fa-close pull-right"/></a>
-                        </li>
-                        <li className="list-group-item wbdv-module-item">
-                            <span className="wbdv-module-item-title">Module 4</span>
-                            <a href="#">
-                                <i className="fa fa-close pull-right"/></a>
-                        </li>
-                        <li className="list-group-item wbdv-module-item">
-                            <span className="wbdv-module-item-title">Module 5</span>
-                            <a href="#">
-                                <i className="fa fa-close pull-right"/></a>
-                        </li>
-                        <li className="list-group-item wbdv-module-item">
-                            <span className="wbdv-module-item-title">Module 6</span>
-                            <a href="#">
-                                <i className="fa fa-close pull-right"/></a>
-                        </li>
-                        <li className="list-group-item wbdv-module-item">
-                            <span className="wbdv-module-item-title">Module 7</span>
-                            <a href="#">
-                                <i className="fa fa-close pull-right"/></a>
-                        </li>
-                        <li className="list-group-item">
-                            <a href="#"><i className="fa fa-plus-circle pull-right"/></a>
-                        </li>
-                    </ul>
+
+                    <WidgetListContainer/>
+
+                    {/*<ul className="list-group wbdv-module-list">*/}
+                    {/*    <li className="list-group-item wbdv-module-item">*/}
+                    {/*        <span className="wbdv-module-item-title">Module 1</span>*/}
+                    {/*        <a href="#">*/}
+                    {/*            <i className="fa fa-close pull-right"/></a>*/}
+                    {/*    </li>*/}
+                    {/*    <li className="list-group-item wbdv-module-item">*/}
+                    {/*        <span className="wbdv-module-item-title">Module 2</span>*/}
+                    {/*        <a href="#">*/}
+                    {/*            <i className="fa fa-close pull-right"/></a>*/}
+                    {/*    </li>*/}
+                    {/*    <li className="list-group-item active wbdv-module-item">*/}
+                    {/*        <span className="wbdv-module-item-title">Module 3</span>*/}
+                    {/*        <a href="#">*/}
+                    {/*            <i className="fa fa-close pull-right"/></a>*/}
+                    {/*    </li>*/}
+                    {/*    <li className="list-group-item wbdv-module-item">*/}
+                    {/*        <span className="wbdv-module-item-title">Module 4</span>*/}
+                    {/*        <a href="#">*/}
+                    {/*            <i className="fa fa-close pull-right"/></a>*/}
+                    {/*    </li>*/}
+                    {/*    <li className="list-group-item wbdv-module-item">*/}
+                    {/*        <span className="wbdv-module-item-title">Module 5</span>*/}
+                    {/*        <a href="#">*/}
+                    {/*            <i className="fa fa-close pull-right"/></a>*/}
+                    {/*    </li>*/}
+                    {/*    <li className="list-group-item wbdv-module-item">*/}
+                    {/*        <span className="wbdv-module-item-title">Module 6</span>*/}
+                    {/*        <a href="#">*/}
+                    {/*            <i className="fa fa-close pull-right"/></a>*/}
+                    {/*    </li>*/}
+                    {/*    <li className="list-group-item wbdv-module-item">*/}
+                    {/*        <span className="wbdv-module-item-title">Module 7</span>*/}
+                    {/*        <a href="#">*/}
+                    {/*            <i className="fa fa-close pull-right"/></a>*/}
+                    {/*    </li>*/}
+                    {/*    <li className="list-group-item">*/}
+                    {/*        <a href="#"><i className="fa fa-plus-circle pull-right"/></a>*/}
+                    {/*    </li>*/}
+                    {/*</ul>*/}
                 </div>
 
                 <div className="col-8">
