@@ -7,29 +7,25 @@ import CourseManagerComponent from "./components/CourseManagerComponent";
 
 import {Provider} from "react-redux";
 import {combineReducers, createStore} from "redux";
-import HelloContainer from "./containers/HelloContainer";
-import CounterContainer from "./containers/CounterContainer";
-import fsm from "./reducers/fsm";
 import widgetsReducer from "./reducers/widgetsReducer";
-import WidgetListContainer from "./containers/WidgetListContainer";
+import lessonReducer from "./reducers/lessonReducer";
+import moduleReducer from "./reducers/moduleReducer";
+import courseReducer from "./reducers/courseReducer";
 
 
-// all the states are stored in Redux store
-//const store = createStore(fsm)
 const reducers = combineReducers({
-    fsm: fsm,
-    widgetsReducer: widgetsReducer
+    widgetsReducer: widgetsReducer,
+    lessonReducer: lessonReducer,
+    moduleReducer: moduleReducer,
+    courseReducer: courseReducer
 })
 const store = createStore(reducers)
 
 
 ReactDOM.render(
     <Provider store={store}>
-        <HelloContainer/>
-        <CounterContainer/>
-        <WidgetListContainer/>
+    <CourseManagerComponent/>
     </Provider>,
-    //<CourseManagerComponent/>,
     document.getElementById('root')
 );
 

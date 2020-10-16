@@ -1,94 +1,42 @@
 import React from "react";
 import {findCourseById} from "../services/CourseService";
 import {Link} from "react-router-dom";
-import WidgetList from "./WidgetList";
-import WidgetListContainer from "../containers/WidgetListContainer";
+import LessonTabsContainer from "../containers/LessonTabsContainer";
+import ModuleListComponent from "./ModuleListComponent";
+import {connect} from "react-redux";
+import {findModulesForCourse} from "../services/ModuleService";
+export const SET_COURSES = "SET_COURSES";
+export const FIND_MODULES_FOR_COURSE = "FIND_MODULES_FOR_COURSE";
 
-export default class CourseEditorComponent extends React.Component{
 
-    state = {
-        course: {
-            _id: "",
-            title: ""
-        }
-    }
+class CourseEditorComponent extends React.Component{
 
+    // this lifecycle hook makes invocation to server
+    // also used to retrieve the modules associated with a course
     componentDidMount() {
-        //console.log(this.props)
-        findCourseById(this.props.match.params.courseId)
-            .then(actualCourse => this.setState({
-                course: actualCourse
-            }))
+        this.props.findCourseById(this.props.match.params.courseId)
+        this.props.findModulesForCourse(this.props.match.params.courseId)
     }
+
 
     render() {
         return (
         <div>
             <h2 className="my-3">
                 <Link to="/"><i className="fa fa-home"/></Link>
-                {this.state.course.title}
+                {this.props.course.title}
             </h2>
 
-
             <div className="row">
+
                 <div className="col-4">
-
-                    <WidgetListContainer/>
-
-                    {/*<ul className="list-group wbdv-module-list">*/}
-                    {/*    <li className="list-group-item wbdv-module-item">*/}
-                    {/*        <span className="wbdv-module-item-title">Module 1</span>*/}
-                    {/*        <a href="#">*/}
-                    {/*            <i className="fa fa-close pull-right"/></a>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item wbdv-module-item">*/}
-                    {/*        <span className="wbdv-module-item-title">Module 2</span>*/}
-                    {/*        <a href="#">*/}
-                    {/*            <i className="fa fa-close pull-right"/></a>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item active wbdv-module-item">*/}
-                    {/*        <span className="wbdv-module-item-title">Module 3</span>*/}
-                    {/*        <a href="#">*/}
-                    {/*            <i className="fa fa-close pull-right"/></a>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item wbdv-module-item">*/}
-                    {/*        <span className="wbdv-module-item-title">Module 4</span>*/}
-                    {/*        <a href="#">*/}
-                    {/*            <i className="fa fa-close pull-right"/></a>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item wbdv-module-item">*/}
-                    {/*        <span className="wbdv-module-item-title">Module 5</span>*/}
-                    {/*        <a href="#">*/}
-                    {/*            <i className="fa fa-close pull-right"/></a>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item wbdv-module-item">*/}
-                    {/*        <span className="wbdv-module-item-title">Module 6</span>*/}
-                    {/*        <a href="#">*/}
-                    {/*            <i className="fa fa-close pull-right"/></a>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item wbdv-module-item">*/}
-                    {/*        <span className="wbdv-module-item-title">Module 7</span>*/}
-                    {/*        <a href="#">*/}
-                    {/*            <i className="fa fa-close pull-right"/></a>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <a href="#"><i className="fa fa-plus-circle pull-right"/></a>*/}
-                    {/*    </li>*/}
-                    {/*</ul>*/}
+                    <ModuleListComponent/>
                 </div>
 
                 <div className="col-8">
-                    <ul className="nav nav-tabs wbdv-lesson-tabs">
-                        <li className="nav-item"><a className="nav-link active" href="#">Lesson 1</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#">Lesson 2</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#">Lesson 3</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#">Lesson 4</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#">Lesson 5</a></li>
-                        <li className="nav-item">
-                            <a className="nav-link wbdv-lesson-add-btn" href="#">
-                                <i className="fa fa-plus-circle pull-right fa-lg"/></a>
-                        </li>
-                    </ul>
+
+                    <LessonTabsContainer/>
+
                     <ul className="nav nav-pills justify-content-between padding-below-header mt-3 wbdv-topic-pill-list">
                         <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 1</a></li>
                         <li className="nav-item wbdv-topic-pill"><a className="nav-link active" href="#">Topic 2</a>
@@ -155,3 +103,27 @@ export default class CourseEditorComponent extends React.Component{
     }
 
 }
+
+const stateToPropertyMapper = (state) => ({
+    course: state.courseReducer.course
+})
+
+
+const propertyToDispatchMapper = (dispatch) => ({
+    // findCourseById is the props attr
+    // props name is same as name of service function
+    findCourseById: (courseId) => {findCourseById(courseId)
+        .then(actualCourse => dispatch({
+            type: SET_COURSES,
+            course: actualCourse
+        }))
+    },
+    findModulesForCourse: (courseId) => findModulesForCourse(courseId)
+        .then(actualModules => dispatch({
+            type: FIND_MODULES_FOR_COURSE,
+            modules: actualModules
+        }))
+})
+
+
+export default connect (stateToPropertyMapper, propertyToDispatchMapper)(CourseEditorComponent)
