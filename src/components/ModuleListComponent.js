@@ -1,6 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import {createModuleForCourse, deleteModule, updateModule} from "../services/ModuleService";
+import {Link} from "react-router-dom";
+
 export const CREATE_MODULE = "CREATE_MODULE";
 export const DELETE_MODULE = "DELETE_MODULE";
 export const UPDATE_MODULE = "UPDATE_MODULE";
@@ -16,7 +18,7 @@ const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule,
                         {
                             !module.editing &&
                             <span>
-                            {module.title}
+                            <Link to={`/edit/${course._id}/modules/${module._id}`}>{module.title}</Link>
                             <button className="btn btn-link pull-right" onClick={() => editModule(module)}>
                                 <i className="fa fa-pencil"/></button>
                             </span>
@@ -43,7 +45,6 @@ const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule,
                     <i className="fa fa-plus"/></button>
             </li>
         </ul>
-
 
     </div>
 
@@ -73,23 +74,32 @@ const propertyToDispatchMapper = (dispatch) => ({
             module: actualModule
         })),
 
+    // sends the final update to server
     okModule: (module) => updateModule(module._id, {...module, editing: false})
         .then(status => dispatch({
             type: UPDATE_MODULE,
             module: {...module, editing: false}
         })),
 
+    // flip into field to make the element editable
     editModule: (module) => updateModule(module._id, {...module, editing: true})
         .then(status => dispatch({
             type: UPDATE_MODULE,
             module: {...module, editing: true}
         })),
-
-    updateModule: (module) => updateModule(module._id, module)
-        .then(status => dispatch({
+    
+    // maintain the intermediate updates in local state managed by reducer
+    updateModule: (module) =>
+        dispatch({
             type: UPDATE_MODULE,
             module: module
-        }))
+        })
+
+        // updateModule(module._id, module)
+        // .then(status => dispatch({
+        //     type: UPDATE_MODULE,
+        //     module: module
+        // }))
 
 })
 

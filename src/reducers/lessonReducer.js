@@ -1,55 +1,46 @@
 
-import {CREATE_LESSON, DELETE_LESSON, UPDATE_LESSON} from "../actions/LessonActions";
+import {CREATE_LESSON_FOR_MODULE, DELETE_LESSON, UPDATE_LESSON} from "../components/LessonTabsComponent";
+import {FIND_LESSONS_FOR_MODULE} from "../components/CourseEditorComponent";
+
 
 const initialState = {
-    lessons: [
-        {
-            _id: "123",
-            name: "lesson 1",
-            editing: false
-        },
-        {
-            _id: "234",
-            name: "lesson 2",
-            editing: false
-        },
-        {
-            _id: "345",
-            name: "lesson 3",
-            editing: false
-        },
-        {
-            _id: "456",
-            name: "lesson 4",
-            editing: false
-        }
-    ]
+    lessons: [] // to make sure initial state is iterable
 }
 
-const lessonReducer = (state=initialState, action) => {
+const lessonReducer = (state = initialState, action) => {
     switch (action.type) {
-        case CREATE_LESSON:
-            return {
-                lessons: [...state.lessons, {
-                    _id: Date.now() + "",
-                    name: "New Lesson",
-                    editing: false
-                }]
-            }
         case UPDATE_LESSON:
             return {
+                ...state,
                 lessons: state.lessons.map(lesson => lesson._id === action.lesson._id ?
                     action.lesson : lesson)
             }
         case DELETE_LESSON:
             return {
-                //lessons: state.lessons.filter(lesson => lesson !== action.lesson)
-                lessons: state.lessons.filter(lesson => lesson._id !== action.lesson._id)
+                ...state,
+                lessons: state.lessons.filter(lesson => lesson._id !== action.lessonId)
+            }
+        case FIND_LESSONS_FOR_MODULE:
+            return {
+                ...state,
+                lessons: action.lessons,
+                // each list of lessons is under the module id
+                // module id is added as attr once component is invoked
+                moduleId: action.moduleId
+            }
+        case CREATE_LESSON_FOR_MODULE:
+            return {
+                // prev state is copied so we still have module id
+                // after adding new lesson to the list
+                ...state,
+                lessons: [
+                    ...state.lessons,
+                    action.lesson
+                ]
             }
         default:
             return state
     }
-
 }
 
 export default lessonReducer;
