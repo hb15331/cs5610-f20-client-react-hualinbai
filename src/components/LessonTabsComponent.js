@@ -38,19 +38,12 @@ const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForMod
                     {
                         !lesson.editing &&
                         <span>
-
                             <Link to={`/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}>
                                 {lesson.title}
                             </Link>
-
                             <button className="btn btn-link" onClick={() => updateLesson({...lesson, editing: true})}>
                                 <i className="fa fa-pencil"/>
                             </button>
-
-                        {/*<Link to={`${moduleId}/lessons/${lesson._id}`}>{lesson.title}</Link>*/}
-                        {/*<button className="btn btn-link" onClick={() => updateLesson({...lesson, editing: true})}>*/}
-                        {/*    <i className="fa fa-pencil"/></button>*/}
-
                         </span>
                     }
                     </a>

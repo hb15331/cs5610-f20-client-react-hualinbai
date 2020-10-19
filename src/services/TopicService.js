@@ -25,6 +25,16 @@ export const deleteTopic = (topicId) =>
         .then(response => response.json())
 
 
+export const updateTopic = (topicId, newTopic) =>
+    fetch(`${topicUrl}/${topicId}`, {
+        method: "PUT",
+        body: JSON.stringify(newTopic),
+        headers: {
+            "content-type": "application/json"
+        }
+    }).then(response => response.json())
+
+
 
 
 

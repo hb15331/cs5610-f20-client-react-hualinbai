@@ -1,5 +1,5 @@
 import {FIND_TOPICS_FOR_LESSON} from "../components/CourseEditorComponent";
-import {CREATE_TOPIC_FOR_LESSON, DELETE_TOPIC} from "../components/TopicPillsComponent";
+import {CREATE_TOPIC_FOR_LESSON, DELETE_TOPIC, UPDATE_TOPIC} from "../components/TopicPillsComponent";
 
 const initialState = {
     topics: []
@@ -27,6 +27,12 @@ const topicsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 topics: state.topics.filter(topic => topic._id !== action.topicId)
+            }
+        case UPDATE_TOPIC:
+            return {
+                ...state,
+                topics: state.topics.map(topic => topic._id === action.topic._id ?
+                    action.topic : topic)
             }
         default:
             return state;
