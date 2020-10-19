@@ -5,7 +5,7 @@ const moduleUrl = "http://wbdv-generic-server.herokuapp.com/api/hualin/modules"
 const lessonUrl = "http://wbdv-generic-server.herokuapp.com/api/hualin/lessons"
 
 
-export const findLessonsForModule = (moduleId) =>
+export const findLessonsForModule = (courseId, moduleId) =>
     fetch(`${moduleUrl}/${moduleId}/lessons`)
         .then(response => response.json())
 

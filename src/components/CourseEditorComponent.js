@@ -19,21 +19,24 @@ class CourseEditorComponent extends React.Component{
         // router is passing the props, which contains course id and module id
         const courseId = this.props.match.params.courseId
         const moduleId = this.props.match.params.moduleId
+
+        // invoke the service functions
         this.props.findCourseById(courseId)
         this.props.findModulesForCourse(courseId)
         // if the module with such id exists
         if (moduleId) {
-            this.props.findLessonsForModule(moduleId)
+            this.props.findLessonsForModule(courseId, moduleId)
         }
     }
 
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        const courseId = this.props.match.params.courseId
         const moduleId = this.props.match.params.moduleId
-        const lessonId = this.props.match.params.lessonId
+
         // if the props is changed as url is changed, fetch a new set of lessons
         if (moduleId !== prevProps.match.params.moduleId) {
-            this.props.findLessonsForModule(moduleId)
+            this.props.findLessonsForModule(courseId, moduleId)
         }
 
     }
@@ -56,7 +59,6 @@ class CourseEditorComponent extends React.Component{
                 <div className="col-8">
 
                     <LessonTabsComponent/>
-
 
                     <ul className="nav nav-pills justify-content-between padding-below-header mt-3 wbdv-topic-pill-list">
                         <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 1</a></li>
@@ -144,11 +146,12 @@ const propertyToDispatchMapper = (dispatch) => ({
             type: FIND_MODULES_FOR_COURSE,
             modules: actualModules
         })),
-    findLessonsForModule: (moduleId) => findLessonsForModule(moduleId)
+    findLessonsForModule: (courseId, moduleId) => findLessonsForModule(courseId, moduleId)
         .then(lessons => dispatch({
             type: FIND_LESSONS_FOR_MODULE,
             lessons: lessons,
-            moduleId: moduleId
+            moduleId: moduleId,
+            courseId: courseId
         }))
 
 })

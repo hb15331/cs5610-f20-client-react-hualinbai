@@ -8,8 +8,10 @@ export const DELETE_LESSON = "DELETE_LESSON";
 export const UPDATE_LESSON = "UPDATE_LESSON";
 
 
-const LessonTabsComponent = ({moduleId, lessons=[], createLessonForModule, deleteLesson, updateLesson}) =>
+const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForModule, deleteLesson, updateLesson}) =>
 
+    <div>
+    <h3>lessons for {moduleId}</h3>
     <ul className="nav nav-tabs">
         {
             // each child in a list should have a unique key prop
@@ -37,7 +39,7 @@ const LessonTabsComponent = ({moduleId, lessons=[], createLessonForModule, delet
                         !lesson.editing &&
                         <span>
 
-                            <Link to={`${moduleId}/lessons/${lesson._id}`}>
+                            <Link to={`/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}>
                                 {lesson.title}
                             </Link>
 
@@ -59,11 +61,14 @@ const LessonTabsComponent = ({moduleId, lessons=[], createLessonForModule, delet
         <li className="nav-item"><button className="btn btn-primary" onClick={() => createLessonForModule(moduleId)}>+</button></li>
     </ul>
 
+    </div>
+
 
 
 const stateToPropertyMapper = (state) => ({
     moduleId: state.lessonReducer.moduleId,
-    lessons: state.lessonReducer.lessons
+    lessons: state.lessonReducer.lessons,
+    courseId: state.lessonReducer.courseId
 })
 
 

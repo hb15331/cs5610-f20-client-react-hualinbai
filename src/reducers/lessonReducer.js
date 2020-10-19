@@ -26,7 +26,8 @@ const lessonReducer = (state = initialState, action) => {
                 lessons: action.lessons,
                 // each list of lessons is under the module id
                 // module id is added as attr once component is invoked
-                moduleId: action.moduleId
+                moduleId: action.moduleId,
+                courseId: action.courseId
             }
         case CREATE_LESSON_FOR_MODULE:
             return {
