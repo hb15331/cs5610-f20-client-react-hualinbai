@@ -1,7 +1,5 @@
 
-// the url that captures parent-child relationship between module and lessons
 const moduleUrl = "http://wbdv-generic-server.herokuapp.com/api/hualin/modules"
-// the url that interacts with lessons directly
 const lessonUrl = "http://wbdv-generic-server.herokuapp.com/api/hualin/lessons"
 
 

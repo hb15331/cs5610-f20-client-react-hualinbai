@@ -10,7 +10,8 @@ export const UPDATE_MODULE = "UPDATE_MODULE";
 
 const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule, editModule, okModule, updateModule}) =>
     <div>
-        <h4>Modules for {course.title}</h4>
+        <h5 className="text-center">Modules for {course.title}</h5>
+
         <ul className="list-group">
             {
                 modules.map(module =>

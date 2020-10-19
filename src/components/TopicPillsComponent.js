@@ -8,16 +8,13 @@ export const UPDATE_TOPIC = "UPDATE_TOPIC";
 
 const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteTopic, updateTopic, okTopic, editTopic}) =>
 
-    <div>
-    <h3>Topics for {lessonId}</h3>
+    <div className="mt-4">
+    {/*<h3>Topics for {lessonId}</h3>*/}
     <ul className="nav nav-pills">
         {
             topics.map(topic =>
-
                 <li className="nav-item" key={topic._id}>
-
                     <a className="nav-link">
-
                         {
                             !topic.editing &&
                             <span>
@@ -48,13 +45,13 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
             )
         }
         <li className="nav-item">
+            <a className="nav-link">
             <button className="btn btn-link" onClick={() => createTopicForLesson(lessonId)}>
-                <i className="fa fa-plus"/>
-            </button>
+                <i className="fa fa-plus"/></button>
+            </a>
         </li>
     </ul>
     </div>
-
 
 
 const stateToPropertyMapper = (state) => ({

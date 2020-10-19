@@ -34,7 +34,3 @@ export const updateTopic = (topicId, newTopic) =>
         }
     }).then(response => response.json())
 
-
-
-
-

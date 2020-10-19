@@ -11,15 +11,13 @@ export const UPDATE_LESSON = "UPDATE_LESSON";
 const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForModule, deleteLesson, updateLesson}) =>
 
     <div>
-    <h3>lessons for {moduleId}</h3>
+    {/*<h3>lessons for {moduleId}</h3>*/}
     <ul className="nav nav-tabs">
         {
             // each child in a list should have a unique key prop
             lessons.map(lesson =>
                 <li className="nav-item" key={lesson._id}>
-
                     <a className="nav-link">
-
                     {
                         lesson.editing &&
                         <span>
@@ -50,10 +48,13 @@ const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForMod
                 </li>
             )
         }
-
-        <li className="nav-item"><button className="btn btn-primary" onClick={() => createLessonForModule(moduleId)}>+</button></li>
+        <li className="nav-item">
+            <a className="nav-link">
+            <button className="btn btn-link" onClick={() => createLessonForModule(moduleId)}>
+                <i className="fa fa-plus"/></button>
+            </a>
+        </li>
     </ul>
-
     </div>
 
 

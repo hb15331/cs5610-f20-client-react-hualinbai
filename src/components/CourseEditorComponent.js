@@ -58,7 +58,7 @@ class CourseEditorComponent extends React.Component{
         <div>
             <h2 className="my-3">
                 <Link to="/"><i className="fa fa-home"/></Link>
-                {this.props.course.title}
+                <span className="ml-2">{this.props.course.title}</span>
             </h2>
 
             <div className="row">
@@ -72,20 +72,8 @@ class CourseEditorComponent extends React.Component{
                     <LessonTabsComponent/>
 
                     <TopicPillsComponent/>
-
-                    {/*<ul className="nav nav-pills justify-content-between padding-below-header mt-3 wbdv-topic-pill-list">*/}
-                    {/*    <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 1</a></li>*/}
-                    {/*    <li className="nav-item wbdv-topic-pill"><a className="nav-link active" href="#">Topic 2</a>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 3</a></li>*/}
-                    {/*    <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 4</a></li>*/}
-                    {/*    <li className="nav-item wbdv-topic-pill">*/}
-                    {/*        <a className="nav-link wbdv-topic-add-btn" href="#">*/}
-                    {/*            <i className="fa fa-plus-circle pull-right fa-lg"/></a>*/}
-                    {/*    </li>*/}
-                    {/*</ul>*/}
-
-                    <div className="mt-3 d-flex align-items-center">
+                    
+                    <div className="mt-5 d-flex align-items-center">
                         <button className="btn btn-success">Save</button>
                         <span className="ml-3 mr-1">Preview</span>
                         <a href="#"><i className="fa fa-toggle-on fa-2x"/></a>
