@@ -6,9 +6,12 @@ import {connect} from "react-redux";
 import {findModulesForCourse} from "../services/ModuleService";
 import {findLessonsForModule} from "../services/LessonService";
 import LessonTabsComponent from "./LessonTabsComponent";
+import {findTopicsForLesson} from "../services/TopicService";
+import TopicPillsComponent from "./TopicPillsComponent";
 export const SET_COURSES = "SET_COURSES";
 export const FIND_MODULES_FOR_COURSE = "FIND_MODULES_FOR_COURSE";
 export const FIND_LESSONS_FOR_MODULE = "FIND_LESSONS_FOR_MODULE";
+export const FIND_TOPICS_FOR_LESSON = "FIND_TOPICS_FOR_LESSON";
 
 
 class CourseEditorComponent extends React.Component{
@@ -19,6 +22,7 @@ class CourseEditorComponent extends React.Component{
         // router is passing the props, which contains course id and module id
         const courseId = this.props.match.params.courseId
         const moduleId = this.props.match.params.moduleId
+        const lessonId = this.props.match.params.lessonId
 
         // invoke the service functions
         this.props.findCourseById(courseId)
@@ -27,16 +31,23 @@ class CourseEditorComponent extends React.Component{
         if (moduleId) {
             this.props.findLessonsForModule(courseId, moduleId)
         }
+        if (lessonId) {
+            this.props.findTopicsForLesson(lessonId)
+        }
     }
 
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const courseId = this.props.match.params.courseId
         const moduleId = this.props.match.params.moduleId
+        const lessonId = this.props.match.params.lessonId
 
         // if the props is changed as url is changed, fetch a new set of lessons
         if (moduleId !== prevProps.match.params.moduleId) {
             this.props.findLessonsForModule(courseId, moduleId)
+        }
+        if (lessonId !== prevProps.match.params.lessonId) {
+            this.props.findTopicsForLesson(lessonId)
         }
 
     }
@@ -60,17 +71,19 @@ class CourseEditorComponent extends React.Component{
 
                     <LessonTabsComponent/>
 
-                    <ul className="nav nav-pills justify-content-between padding-below-header mt-3 wbdv-topic-pill-list">
-                        <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 1</a></li>
-                        <li className="nav-item wbdv-topic-pill"><a className="nav-link active" href="#">Topic 2</a>
-                        </li>
-                        <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 3</a></li>
-                        <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 4</a></li>
-                        <li className="nav-item wbdv-topic-pill">
-                            <a className="nav-link wbdv-topic-add-btn" href="#">
-                                <i className="fa fa-plus-circle pull-right fa-lg"/></a>
-                        </li>
-                    </ul>
+                    <TopicPillsComponent/>
+
+                    {/*<ul className="nav nav-pills justify-content-between padding-below-header mt-3 wbdv-topic-pill-list">*/}
+                    {/*    <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 1</a></li>*/}
+                    {/*    <li className="nav-item wbdv-topic-pill"><a className="nav-link active" href="#">Topic 2</a>*/}
+                    {/*    </li>*/}
+                    {/*    <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 3</a></li>*/}
+                    {/*    <li className="nav-item wbdv-topic-pill"><a className="nav-link" href="#">Topic 4</a></li>*/}
+                    {/*    <li className="nav-item wbdv-topic-pill">*/}
+                    {/*        <a className="nav-link wbdv-topic-add-btn" href="#">*/}
+                    {/*            <i className="fa fa-plus-circle pull-right fa-lg"/></a>*/}
+                    {/*    </li>*/}
+                    {/*</ul>*/}
 
                     <div className="mt-3 d-flex align-items-center">
                         <button className="btn btn-success">Save</button>
@@ -141,18 +154,29 @@ const propertyToDispatchMapper = (dispatch) => ({
             course: actualCourse
         }))
     },
+
     findModulesForCourse: (courseId) => findModulesForCourse(courseId)
         .then(actualModules => dispatch({
             type: FIND_MODULES_FOR_COURSE,
             modules: actualModules
         })),
+
     findLessonsForModule: (courseId, moduleId) => findLessonsForModule(courseId, moduleId)
         .then(lessons => dispatch({
             type: FIND_LESSONS_FOR_MODULE,
             lessons: lessons,
             moduleId: moduleId,
             courseId: courseId
+        })),
+
+    findTopicsForLesson: (lessonId) => findTopicsForLesson(lessonId)
+        .then(topics => dispatch({
+            type: FIND_TOPICS_FOR_LESSON,
+            topics: topics,
+            lessonId: lessonId
         }))
+
+
 
 })
 
