@@ -2,7 +2,6 @@ import React from "react";
 import {connect} from "react-redux";
 import {createModuleForCourse, deleteModule, updateModule} from "../services/ModuleService";
 import {Link} from "react-router-dom";
-// import '../styles/ModuleListComponent.css';
 
 export const CREATE_MODULE = "CREATE_MODULE";
 export const DELETE_MODULE = "DELETE_MODULE";
@@ -22,7 +21,9 @@ const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule,
                         {
                             !module.editing &&
                             <span>
-                            <Link to={`/edit/${course._id}/modules/${module._id}`}>{module.title}</Link>
+                            <Link to={`/edit/${course._id}/modules/${module._id}`}>
+                                {module.title}
+                            </Link>
                             <button className="btn btn-link pull-right" onClick={() => editModule(module)}>
                                 <i className="fa fa-pencil"/></button>
                             </span>

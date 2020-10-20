@@ -13,6 +13,8 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
     <ul className="nav nav-pills">
         {
             topics.map(topic =>
+
+                // highlight the current edited topic
                 <li className="nav-item" key={topic._id}>
                     <a className={`nav-link ${topic.editing ? "active" : ""}`}>
                         {

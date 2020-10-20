@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {createLessonForModule, deleteLesson, updateLesson} from "../services/LessonService";
 import {Link} from "react-router-dom";
+import "../styles/LessonTabsComponent.css";
 
 export const CREATE_LESSON_FOR_MODULE = "CREATE_LESSON_FOR_MODULE";
 export const DELETE_LESSON = "DELETE_LESSON";
@@ -19,7 +20,7 @@ const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForMod
 
                 // highlight the current edited lesson
                 <li className="nav-item" key={lesson._id}>
-                    <a className={`nav-link ${lesson.editing ? "active" : ""}`}>
+                    <a className={`nav-link ${lesson.editing ? "activeTab" : ""}`}>
                     {
                         lesson.editing &&
                         <span>
@@ -29,11 +30,11 @@ const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForMod
                                    className="form-control"
                                    value={lesson.title}/>
 
-                             <button className="btn btn-link" onClick={() => updateLesson({...lesson, editing: false})}>
+                             <button className="btn btn-link text-success" onClick={() => updateLesson({...lesson, editing: false})}>
                                 <i className="fa fa-check"/>
                             </button>
 
-                            <button className="btn btn-link" onClick={() => deleteLesson(lesson._id)}>
+                            <button className="btn btn-link text-danger" onClick={() => deleteLesson(lesson._id)}>
                                 <i className="fa fa-close"/>
                             </button>
 
