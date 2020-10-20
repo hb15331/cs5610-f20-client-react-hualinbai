@@ -14,7 +14,7 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
         {
             topics.map(topic =>
                 <li className="nav-item" key={topic._id}>
-                    <a className="nav-link">
+                    <a className={`nav-link ${topic.editing ? "active" : ""}`}>
                         {
                             !topic.editing &&
                             <span>
@@ -33,11 +33,12 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
                                    className="form-control"
                                    value={topic.title}/>
 
-                            <button className="btn btn-link" onClick={() => deleteTopic(topic._id)}>
+                            <button className="btn btn-link text-success" onClick={() => okTopic(topic)}>
+                                <i className="fa fa-check"/></button>
+
+                            <button className="btn btn-link text-danger" onClick={() => deleteTopic(topic._id)}>
                                 <i className="fa fa-close"/></button>
 
-                            <button className="btn btn-link" onClick={() => okTopic(topic)}>
-                                <i className="fa fa-check"/></button>
                             </span>
                         }
                     </a>

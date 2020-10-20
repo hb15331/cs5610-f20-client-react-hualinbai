@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {createModuleForCourse, deleteModule, updateModule} from "../services/ModuleService";
 import {Link} from "react-router-dom";
+// import '../styles/ModuleListComponent.css';
 
 export const CREATE_MODULE = "CREATE_MODULE";
 export const DELETE_MODULE = "DELETE_MODULE";
@@ -15,7 +16,9 @@ const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule,
         <ul className="list-group">
             {
                 modules.map(module =>
-                    <li className="list-group-item" key={module._id}>
+
+                    // highlight the current edited module
+                    <li className={`list-group-item ${module.editing ? "active" : ""}`} key={module._id}>
                         {
                             !module.editing &&
                             <span>
@@ -33,13 +36,14 @@ const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule,
                             })}
                                    className="form-control"
                                    value={module.title}/>
-                            <button className="btn btn-link pull-right" onClick={() => deleteModule(module)}>
+                            <button className="btn btn-link pull-right text-danger" onClick={() => deleteModule(module)}>
                             <i className="fa fa-close"/></button>
-                            <button className="btn btn-link pull-right" onClick={() => okModule(module)}>
+                            <button className="btn btn-link pull-right text-success" onClick={() => okModule(module)}>
                                 <i className="fa fa-check"/></button>
                             </span>
                         }
-                    </li>)
+                    </li>
+                )
             }
             <li className="list-group-item text-center">
                 <button onClick={() => createModule(course)} className="btn btn-link">

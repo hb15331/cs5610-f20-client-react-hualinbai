@@ -16,21 +16,27 @@ const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForMod
         {
             // each child in a list should have a unique key prop
             lessons.map(lesson =>
+
+                // highlight the current edited lesson
                 <li className="nav-item" key={lesson._id}>
-                    <a className="nav-link">
+                    <a className={`nav-link ${lesson.editing ? "active" : ""}`}>
                     {
                         lesson.editing &&
                         <span>
                             <input onChange={(event) => updateLesson({
                                 ...lesson, title: event.target.value
                             })}
+                                   className="form-control"
                                    value={lesson.title}/>
+
+                             <button className="btn btn-link" onClick={() => updateLesson({...lesson, editing: false})}>
+                                <i className="fa fa-check"/>
+                            </button>
+
                             <button className="btn btn-link" onClick={() => deleteLesson(lesson._id)}>
                                 <i className="fa fa-close"/>
                             </button>
-                            <button className="btn btn-link" onClick={() => updateLesson({...lesson, editing: false})}>
-                                <i className="fa fa-check"/>
-                            </button>
+
                         </span>
                     }
                     {
