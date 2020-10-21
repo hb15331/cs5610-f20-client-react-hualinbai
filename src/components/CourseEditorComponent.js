@@ -24,10 +24,11 @@ class CourseEditorComponent extends React.Component{
         const moduleId = this.props.match.params.moduleId
         const lessonId = this.props.match.params.lessonId
 
-        // invoke the service functions
+        // invoke service functions and only render the parent component
         this.props.findCourseById(courseId)
         this.props.findModulesForCourse(courseId)
-        // if the module with such id exists
+        // when the editor is first loaded, no id is passed from url until we click
+        // on any link, so no child component is rendered
         if (moduleId) {
             this.props.findLessonsForModule(courseId, moduleId)
         }

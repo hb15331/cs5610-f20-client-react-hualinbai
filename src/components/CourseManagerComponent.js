@@ -46,7 +46,6 @@ export default class CourseManagerComponent extends React.Component {
 
     addCourse = (newTitle) => {
         const newCourse = {
-            //title: "New Course",
             title: newTitle,
             owner: "me",
             modified: (new Date()).toDateString()

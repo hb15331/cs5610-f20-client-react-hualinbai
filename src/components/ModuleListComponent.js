@@ -8,7 +8,7 @@ export const DELETE_MODULE = "DELETE_MODULE";
 export const UPDATE_MODULE = "UPDATE_MODULE";
 
 
-const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule, editModule, okModule, updateModule, selectModule, moduleId}) =>
+const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule, editModule, okModule, updateModule, moduleId}) =>
 
     <div>
         <h5 className="text-center">Modules for {course.title}</h5>
@@ -23,17 +23,10 @@ const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule,
                         {
                             !module.editing &&
                             <span>
-                                {
-                                    JSON.stringify(module.editing)
-                                }
-                                {
-                                    JSON.stringify(module._id === moduleId)
-                                }
-                            <Link to={`/edit/${course._id}/modules/${module._id}`}
-                                  onClick={() => selectModule(module._id)}>
+                            <Link to={`/edit/${course._id}/modules/${module._id}`} className="text-dark">
                                 {module.title}
                             </Link>
-                            <button className="btn btn-link pull-right" onClick={() => editModule(module)}>
+                            <button className="btn btn-link pull-right text-dark" onClick={() => editModule(module)}>
                                 <i className="fa fa-pencil"/></button>
                             </span>
                         }
@@ -66,6 +59,8 @@ const ModuleListComponent = ({course={}, modules=[], deleteModule, createModule,
 
 const stateToPropertyMapper = (state) => ({
     modules: state.moduleReducer.modules,
+    // we render the lessons only when we click on the corresponding module
+    // then module id is appended to url and saved in lesson state
     moduleId: state.lessonReducer.moduleId,
     // retrieve the course from course reducer
     course: state.courseReducer.course
@@ -102,12 +97,6 @@ const propertyToDispatchMapper = (dispatch) => ({
         .then(status => dispatch({
             type: UPDATE_MODULE,
             module: {...module, editing: true}
-        })),
-
-    selectModule: (moduleId) => updateModule(moduleId, {...module, selectedId: moduleId})
-        .then(status => dispatch({
-            type: UPDATE_MODULE,
-            module: {...module, selectedId: moduleId}
         })),
 
     // maintain the intermediate updates in local state managed by reducer

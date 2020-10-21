@@ -21,7 +21,7 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
                             !topic.editing &&
                             <span>
                             {topic.title}
-                            <button className="btn btn-link" onClick={() => editTopic(topic)}>
+                            <button className="btn btn-link text-dark" onClick={() => editTopic(topic)}>
                                 <i className="fa fa-pencil"/></button>
                             </span>
                         }

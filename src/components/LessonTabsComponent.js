@@ -9,7 +9,7 @@ export const DELETE_LESSON = "DELETE_LESSON";
 export const UPDATE_LESSON = "UPDATE_LESSON";
 
 
-const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForModule, deleteLesson, updateLesson}) =>
+const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForModule, deleteLesson, updateLesson, lessonId}) =>
 
     <div>
     {/*<h3>lessons for {moduleId}</h3>*/}
@@ -20,7 +20,7 @@ const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForMod
 
                 // highlight the current edited lesson
                 <li className="nav-item" key={lesson._id}>
-                    <a className={`nav-link ${lesson.editing ? "activeTab" : ""}`}>
+                    <a className={`nav-link ${lesson.editing || lesson._id === lessonId ? "activeTab" : ""}`}>
                     {
                         lesson.editing &&
                         <span>
@@ -43,10 +43,10 @@ const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForMod
                     {
                         !lesson.editing &&
                         <span>
-                            <Link to={`/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}>
+                            <Link to={`/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`} className="text-dark">
                                 {lesson.title}
                             </Link>
-                            <button className="btn btn-link" onClick={() => updateLesson({...lesson, editing: true})}>
+                            <button className="btn btn-link text-dark" onClick={() => updateLesson({...lesson, editing: true})}>
                                 <i className="fa fa-pencil"/>
                             </button>
                         </span>
@@ -65,9 +65,10 @@ const LessonTabsComponent = ({courseId, moduleId, lessons=[], createLessonForMod
     </div>
 
 
-
+// lesson state is also used in the module component
 const stateToPropertyMapper = (state) => ({
     moduleId: state.lessonReducer.moduleId,
+    lessonId: state.topicReducer.lessonId,
     lessons: state.lessonReducer.lessons,
     courseId: state.lessonReducer.courseId
 })
