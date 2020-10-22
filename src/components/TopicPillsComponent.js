@@ -6,7 +6,7 @@ export const DELETE_TOPIC = "DELETE_TOPIC";
 export const UPDATE_TOPIC = "UPDATE_TOPIC";
 
 
-const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteTopic, updateTopic, okTopic, editTopic}) =>
+const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteTopic, updateTopic, okTopic, editTopic, setSelectedTopic, selectedId}) =>
 
     <div className="mt-4">
     {/*<h3>Topics for {lessonId}</h3>*/}
@@ -16,11 +16,16 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
 
                 // highlight the current edited topic
                 <li className="nav-item" key={topic._id}>
-                    <a className={`nav-link ${topic.editing ? "active" : ""}`}>
+                    <a className={`nav-link ${topic.editing || topic._id === selectedId ? "active" : ""}`}>
+
                         {
                             !topic.editing &&
                             <span>
+
+                            <a href="#" onClick={() => setSelectedTopic(topic._id)} className="text-dark">
                             {topic.title}
+                            </a>
+
                             <button className="btn btn-link text-dark" onClick={() => editTopic(topic)}>
                                 <i className="fa fa-pencil"/></button>
                             </span>
@@ -59,7 +64,8 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
 
 const stateToPropertyMapper = (state) => ({
     topics: state.topicReducer.topics,
-    lessonId: state.topicReducer.lessonId
+    lessonId: state.topicReducer.lessonId,
+    selectedId: state.topicReducer.selectedId
 })
 
 
@@ -90,7 +96,13 @@ const propertyToDispatchMapper = (dispatch) => ({
         dispatch({
             type: UPDATE_TOPIC,
             topic: topic
-        })
+        }),
+
+    setSelectedTopic: (topicId) => dispatch({
+        type: "SET_SELECTED_TOPIC",
+        selectedId: topicId
+    })
+
 
 
 })

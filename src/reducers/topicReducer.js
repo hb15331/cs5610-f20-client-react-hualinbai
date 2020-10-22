@@ -9,7 +9,7 @@ const initialState = {
 const topicsReducer = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_TOPIC_FOR_LESSON:
-            console.log(JSON.stringify(action.topics))
+            //console.log(JSON.stringify(action.topics))
             return {
                 ...state,
                 topics: [
@@ -34,6 +34,14 @@ const topicsReducer = (state = initialState, action) => {
                 topics: state.topics.map(topic => topic._id === action.topic._id ?
                     action.topic : topic)
             }
+
+        case "SET_SELECTED_TOPIC":
+            return {
+                ...state,
+                selectedId: action.selectedId,
+            }
+
+
         default:
             return state;
     }
