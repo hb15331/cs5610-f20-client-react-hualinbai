@@ -1,3 +1,4 @@
+import WidgetService from "../services/WidgetService";
 
 export const DELETE_WIDGET = "DELETE_WIDGET"
 export const CREATE_WIDGET = "CREATE_WIDGET"
@@ -15,9 +16,12 @@ export const deleteWidget = (dispatch, widget) => {
 }
 
 
-export const createWidget = (dispatch) => {
-    dispatch({type: CREATE_WIDGET})
-}
+export const createWidget = (dispatch) =>
+    WidgetService.createWidget().then(widget => dispatch({
+        type: CREATE_WIDGET,
+        widget: widget
+    }))
+
 
 
 export const editWidget = (dispatch, widget) => {
@@ -29,6 +33,5 @@ export const editWidget = (dispatch, widget) => {
 export const okWidget = (dispatch, widget) => {
     dispatch({type: UPDATE_WIDGET, widget: {...widget, editing: false}})
 }
-
 
 

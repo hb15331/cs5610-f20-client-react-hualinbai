@@ -71,6 +71,8 @@ const stateToPropertyMapper = (state) => ({
     lessonId: state.topicReducer.lessonId,
     lessons: state.lessonReducer.lessons,
     courseId: state.lessonReducer.courseId
+    // we can also get courseId from courseReducer
+    // course: state.courseReducer.course
 })
 
 

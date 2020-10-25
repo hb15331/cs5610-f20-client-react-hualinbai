@@ -8,6 +8,8 @@ import {findLessonsForModule} from "../services/LessonService";
 import LessonTabsComponent from "./LessonTabsComponent";
 import {findTopicsForLesson} from "../services/TopicService";
 import TopicPillsComponent from "./TopicPillsComponent";
+import {findAllWidgets} from "../services/WidgetService";
+import WidgetListContainer from "../containers/WidgetListContainer";
 export const SET_COURSES = "SET_COURSES";
 export const FIND_MODULES_FOR_COURSE = "FIND_MODULES_FOR_COURSE";
 export const FIND_LESSONS_FOR_MODULE = "FIND_LESSONS_FOR_MODULE";
@@ -35,6 +37,10 @@ class CourseEditorComponent extends React.Component{
         if (lessonId) {
             this.props.findTopicsForLesson(lessonId)
         }
+
+        this.props.findAllWidgets()
+
+
     }
 
 
@@ -73,6 +79,8 @@ class CourseEditorComponent extends React.Component{
                     <LessonTabsComponent/>
 
                     <TopicPillsComponent/>
+
+                    {/*<WidgetListContainer/>*/}
                     
                     <div className="mt-5 d-flex align-items-center">
                         <button className="btn btn-success">Save</button>
@@ -135,6 +143,12 @@ const stateToPropertyMapper = (state) => ({
 
 
 const propertyToDispatchMapper = (dispatch) => ({
+
+    findAllWidgets: () => findAllWidgets().then(widgets => dispatch({
+        type: "FIND_ALL_WIDGETS",
+        widgets: widgets
+        })),
+
     // findCourseById is the props attr
     // props name is same as name of service function
     findCourseById: (courseId) => {findCourseById(courseId)

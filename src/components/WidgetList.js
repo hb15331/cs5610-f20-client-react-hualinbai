@@ -6,7 +6,8 @@ const WidgetList = ({widgets=[], createWidget, deleteWidget, updateWidget, editW
         <ul className="list-group">
             {
                 widgets.map(widget =>
-                    <li className="list-group-item" key={widget._id}>
+                    // as we iterate, each list item should have a unique identifier
+                    <li className="list-group-item" key={widget.id}>
 
                         {   // if editing, shows the field, delete and ok button
                             widget.editing &&
@@ -27,6 +28,8 @@ const WidgetList = ({widgets=[], createWidget, deleteWidget, updateWidget, editW
                             !widget.editing &&
                             <span>
                                 {widget.name}
+                                {widget.type}
+                                {/*{JSON.stringify(widget)}*/}
                                 <button className="btn btn-link pull-right" onClick={() => editWidget(widget)}>
                                     <i className="fa fa-pencil"/></button>
                             </span>
