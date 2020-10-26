@@ -1,6 +1,6 @@
 
-const lessonUrl = "http://wbdv-generic-server.herokuapp.com/api/hualin/lessons"
-const topicUrl = "http://wbdv-generic-server.herokuapp.com/api/hualin/topics"
+const lessonUrl = "https://wbdv-generic-server.herokuapp.com/api/hualin/lessons"
+const topicUrl = "https://wbdv-generic-server.herokuapp.com/api/hualin/topics"
 
 
 export const findTopicsForLesson = (lessonId) =>

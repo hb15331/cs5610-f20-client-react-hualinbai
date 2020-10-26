@@ -1,6 +1,6 @@
 
-const courseUrl = "http://wbdv-generic-server.herokuapp.com/api/hualin/courses"
-const moduleUrl = "http://wbdv-generic-server.herokuapp.com/api/hualin/modules"
+const courseUrl = "https://wbdv-generic-server.herokuapp.com/api/hualin/courses"
+const moduleUrl = "https://wbdv-generic-server.herokuapp.com/api/hualin/modules"
 
 
 // this service function retrieves the modules for a given course
