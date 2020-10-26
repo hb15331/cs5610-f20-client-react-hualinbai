@@ -1,0 +1,1 @@
+{"version":3,"sources":["LessonTabsComponent.css"],"names":[],"mappings":"AACA,WACI,wBACJ","file":"main.ae0bc858.chunk.css","sourcesContent":["\n.activeTab{\n    background-color: royalblue;\n}"]}
