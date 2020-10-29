@@ -1,12 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
 import {createTopicForLesson, deleteTopic, updateTopic} from "../services/TopicService";
+import {Link} from "react-router-dom";
 export const CREATE_TOPIC_FOR_LESSON = "CREATE_TOPIC_FOR_LESSON";
 export const DELETE_TOPIC = "DELETE_TOPIC";
 export const UPDATE_TOPIC = "UPDATE_TOPIC";
 
 
-const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteTopic, updateTopic, okTopic, editTopic, setSelectedTopic, selectedId}) =>
+const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteTopic,
+                                 updateTopic, okTopic, editTopic, setSelectedTopic, selectedId, moduleId, course}) =>
 
     <div className="mt-4">
     {/*<h3>Topics for {lessonId}</h3>*/}
@@ -22,9 +24,14 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
                             !topic.editing &&
                             <span>
 
-                            <a href="#" onClick={() => setSelectedTopic(topic._id)} className="text-dark">
+                            {/*<a href="#" onClick={() => setSelectedTopic(topic._id)} className="text-dark">*/}
+                            {/*{topic.title}*/}
+                            {/*</a>*/}
+
+                            <Link to={`/edit/${course._id}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
+                                  onClick={() => setSelectedTopic(topic._id)} className="text-dark">
                             {topic.title}
-                            </a>
+                            </Link>
 
                             <button className="btn btn-link text-dark" onClick={() => editTopic(topic)}>
                                 <i className="fa fa-pencil"/></button>
@@ -63,6 +70,8 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
 
 
 const stateToPropertyMapper = (state) => ({
+    course: state.courseReducer.course,
+    moduleId: state.lessonReducer.moduleId, // from lessonReducer not moduleReducer
     topics: state.topicReducer.topics,
     lessonId: state.topicReducer.lessonId,
     selectedId: state.topicReducer.selectedId

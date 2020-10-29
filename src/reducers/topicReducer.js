@@ -6,7 +6,7 @@ const initialState = {
 }
 
 
-const topicsReducer = (state = initialState, action) => {
+const topicReducer = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_TOPIC_FOR_LESSON:
             //console.log(JSON.stringify(action.topics))
@@ -49,7 +49,7 @@ const topicsReducer = (state = initialState, action) => {
 }
 
 
-export default topicsReducer;
+export default topicReducer;
 
 
 
