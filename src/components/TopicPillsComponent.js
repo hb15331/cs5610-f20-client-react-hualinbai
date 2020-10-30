@@ -13,6 +13,19 @@ const TopicPillsComponent = ({topics=[], lessonId, createTopicForLesson, deleteT
     <div className="mt-4">
     {/*<h3>Topics for {lessonId}</h3>*/}
     <ul className="nav nav-pills">
+
+        {/*assume these topic ids lives in generic server*/}
+        {/*<li>*/}
+        {/*    <Link to={`/edit/${course._id}/modules/${moduleId}/lessons/${lessonId}/topics/topic123`} className="nav-link">*/}
+        {/*        Topic 123*/}
+        {/*    </Link>*/}
+        {/*</li>*/}
+        {/*<li>*/}
+        {/*    <Link to={`/edit/${course._id}/modules/${moduleId}/lessons/${lessonId}/topics/topic234`} className="nav-link">*/}
+        {/*        Topic 234*/}
+        {/*    </Link>*/}
+        {/*</li>*/}
+
         {
             topics.map(topic =>
 
@@ -111,8 +124,6 @@ const propertyToDispatchMapper = (dispatch) => ({
         type: "SET_SELECTED_TOPIC",
         selectedId: topicId
     })
-
-
 
 })
 

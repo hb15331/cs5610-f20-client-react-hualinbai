@@ -41,7 +41,6 @@ const topicReducer = (state = initialState, action) => {
                 selectedId: action.selectedId,
             }
 
-
         default:
             return state;
     }

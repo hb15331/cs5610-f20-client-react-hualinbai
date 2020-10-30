@@ -7,31 +7,55 @@ export const UPDATE_WIDGET = "UPDATE_WIDGET"
 
 // pass the actual widget with new name
 export const updateWidget = (dispatch, widget) => {
-    dispatch({type: UPDATE_WIDGET, widget: widget})
+    dispatch({
+        type: UPDATE_WIDGET,
+        widget: widget
+    })
 }
 
 
 export const deleteWidget = (dispatch, widget) => {
-    dispatch({type: DELETE_WIDGET, widget})
+    //dispatch({type: DELETE_WIDGET, widget})
+    WidgetService.deleteWidget(widget.id)
+        .then(status => dispatch({
+            type: DELETE_WIDGET,
+            widget: widget
+        }))
 }
 
 
-export const createWidget = (dispatch) =>
-    WidgetService.createWidget().then(widget => dispatch({
-        type: CREATE_WIDGET,
-        widget: widget
-    }))
+export const createWidgetForTopic = (dispatch, topicId) =>
+{
+    debugger
+    return WidgetService.createWidgetForTopic(topicId)
+        .then(widget => dispatch({
+            type: CREATE_WIDGET,
+            widget: widget,
+            topicId: topicId
+        }))
+}
 
 
 
 export const editWidget = (dispatch, widget) => {
     // pass the updated widget with editing status true
     // same as the update action type
-    dispatch({type: UPDATE_WIDGET, widget: {...widget, editing: true}})
+    //dispatch({type: UPDATE_WIDGET, widget: {...widget, editing: true}})
+    WidgetService.updateWidget(widget.id, widget)
+        .then(status => dispatch({
+            type: UPDATE_WIDGET,
+            widget: {...widget, editing: true}
+        }))
 }
 
+
 export const okWidget = (dispatch, widget) => {
-    dispatch({type: UPDATE_WIDGET, widget: {...widget, editing: false}})
+    //dispatch({type: UPDATE_WIDGET, widget: {...widget, editing: false}})
+    WidgetService.updateWidget(widget.id, widget)
+        .then(status => dispatch({
+            type: UPDATE_WIDGET,
+            widget: {...widget, editing: false}
+        }))
 }
 
 
