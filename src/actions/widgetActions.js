@@ -31,7 +31,7 @@ export const createWidgetForTopic = (dispatch, topicId) =>
         .then(widget => dispatch({
             type: CREATE_WIDGET,
             widget: widget,
-            topicId: topicId
+            //topicId: topicId
         }))
 }
 

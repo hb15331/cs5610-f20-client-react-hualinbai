@@ -7,7 +7,7 @@ const WidgetList = ({widgets=[], createWidgetForTopic, deleteWidget, updateWidge
     <div>
         <ul className="list-group">
 
-            {console.log(topicId)}
+            {/*{console.log(topicId)}*/}
 
             {
                 widgets && widgets.map(widget =>

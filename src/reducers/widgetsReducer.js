@@ -10,11 +10,15 @@ const widgetReducer = (state=initialState, action) => {
     switch (action.type) {
         case CREATE_WIDGET:
             return {
-                widgets: [...state.widgets, action.widget],
-                topicId: action.topicId
+                ...state,
+                widgets: [...state.widgets,
+                    action.widget
+                ]
+                //topicId: action.topicId
             }
         case UPDATE_WIDGET:
             return {
+                ...state,
                 // map recreates the widget list
                 widgets: state.widgets.map(widget => widget.id === action.widget.id ?
                         action.widget : widget)
@@ -22,6 +26,7 @@ const widgetReducer = (state=initialState, action) => {
 
         case DELETE_WIDGET:
             return {
+                ...state,
                 widgets: state.widgets.filter(widget => widget !== action.widget)
             }
         case FIND_ALL_WIDGETS:
