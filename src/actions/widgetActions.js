@@ -25,15 +25,14 @@ export const deleteWidget = (dispatch, widget) => {
 
 
 export const createWidgetForTopic = (dispatch, topicId) =>
-{
-    debugger
-    return WidgetService.createWidgetForTopic(topicId)
+
+    WidgetService.createWidgetForTopic(topicId)
         .then(widget => dispatch({
             type: CREATE_WIDGET,
-            widget: widget,
+            //widget: widget,
+            widget: {...widget, editing: true}
             //topicId: topicId
         }))
-}
 
 
 

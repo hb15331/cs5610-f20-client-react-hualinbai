@@ -14,16 +14,20 @@ const findAllWidgets = () =>
 
 
 const createWidgetForTopic = (topicId) =>
-{
-    debugger
-    return fetch(`${TOPIC_URL}/${topicId}/widgets`, {
+    fetch(`${TOPIC_URL}/${topicId}/widgets`, {
         method: "POST",
-        body: JSON.stringify({name: "NEW HEADING", type: "HEADING", topicId: topicId}),
+        body: JSON.stringify({
+            name: "NEW HEADING",
+            type: "HEADING",
+            topicId: topicId,
+            text: "",
+            size: 1
+        }),
         headers: {
             "content-type": "application/json"
         }
     }).then(response => response.json())
-}
+
 
 
 const updateWidget = (widgetId, newWidget) =>
