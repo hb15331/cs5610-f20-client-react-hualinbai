@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {createWidgetForTopic, deleteWidget, updateWidget, editWidget, okWidget} from "../actions/widgetActions";
 import HeadingWidget from "./widgets/HeadingWidget";
+import ParagraphWidget from "./widgets/ParagraphWidget";
 
 
 const WidgetList = ({widgets=[], createWidgetForTopic, deleteWidget, updateWidget, editWidget, okWidget, topicId}) =>
@@ -48,14 +49,22 @@ const WidgetList = ({widgets=[], createWidgetForTopic, deleteWidget, updateWidge
                                            deleteWidget={deleteWidget}
                                            okWidget={okWidget}
                                            updateWidget={updateWidget}
-                                           editWidget={editWidget}/>
+                                           editWidget={editWidget}
+                            />
+                        }
+                        {
+                            widget.type === "PARAGRAPH" &&
+                            <ParagraphWidget widget={widget}
+                                             deleteWidget={deleteWidget}
+                                             okWidget={okWidget}
+                                             updateWidget={updateWidget}
+                                             editWidget={editWidget}
+                            />
                         }
 
                     </li>
                 )
             }
-
-            {/*<HeadingWidget/>*/}
 
             <li className="list-group-item text-center">
                 <button className="btn btn-link" onClick={() => createWidgetForTopic(topicId)}>

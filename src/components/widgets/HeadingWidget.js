@@ -46,14 +46,20 @@ const HeadingWidget = ({widget, deleteWidget, okWidget, updateWidget, editWidget
                     text: event.target.value
                 })}
                    className="form-control mt-2"
-                   placeholder="Heading text"/>
+                   placeholder="Heading text"
+                   value={widget.text}
+            />
 
-            <select className="form-control mt-2" onChange={(event) =>
-                updateWidget({
-                    ...widget,
-                    size: parseInt(event.target.value)
-                })}>
-                <option value="1">Choose size</option>
+            <select className="form-control mt-2"
+                    onChange={(event) =>
+                        updateWidget({
+                            ...widget,
+                            size: parseInt(event.target.value)
+                    })}
+                    value={widget.size}
+            >
+                {/*<option value="1">Choose size</option>*/}
+                {/*<option value="">--Choose size--</option>*/}
                 <option value="1">Heading 1</option>
                 <option value="2">Heading 2</option>
                 <option value="3">Heading 3</option>
@@ -69,6 +75,7 @@ const HeadingWidget = ({widget, deleteWidget, okWidget, updateWidget, editWidget
                            ...widget,
                            name: event.target.value
                        })}
+                   value={widget.name}
             />
             </div>
         }
