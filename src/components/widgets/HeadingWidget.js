@@ -23,10 +23,19 @@ const HeadingWidget = ({widget, deleteWidget, okWidget, updateWidget, editWidget
                     <button className="btn btn-warning">
                         <i className="fa fa-arrow-down"/>
                     </button>
-                    <select className="form-control">
-                        <option>Heading</option>
-                        <option>Paragraph</option>
+
+                    <select className="form-control"
+                            onChange={(event) =>
+                                updateWidget({
+                                    ...widget,
+                                    type: event.target.value
+                                })}
+                            value={widget.type}
+                    >
+                        <option value="HEADING">Heading</option>
+                        <option value="PARAGRAPH">Paragraph</option>
                     </select>
+
                     <button className="btn btn-danger" onClick={() => deleteWidget(widget)}>
                         <i className="fa fa-trash"/>
                     </button>
