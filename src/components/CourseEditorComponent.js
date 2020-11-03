@@ -107,7 +107,9 @@ const propertyToDispatchMapper = (dispatch) => ({
             type: FIND_WIDGETS_FOR_TOPIC,
             //widgets: widgets,
             // initialize the editing status for widgets fetched from server
-            widgets: widgets.map(widget => ({...widget, editing: true})),
+            // by default all widgets are in preview mode
+            //widgets: widgets.map(widget => ({...widget, editing: true})),
+            widgets: widgets.map(widget => ({...widget, editing: false})),
             topicId: topicId
         })),
 

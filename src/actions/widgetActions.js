@@ -36,8 +36,9 @@ export const createWidgetForTopic = (dispatch, topicId) =>
     WidgetService.createWidgetForTopic(topicId)
         .then(widget => dispatch({
             type: CREATE_WIDGET,
-            widget: {...widget, editing: true}
-            //topicId: topicId
+            //widget: {...widget, editing: true}
+            // a new widget is in preview mode by default
+            widget: {...widget, editing: false}
         }))
 
 
