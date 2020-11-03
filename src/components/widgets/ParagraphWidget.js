@@ -4,11 +4,11 @@ import React from "react";
 const ParagraphWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidget}) =>
     <div>
 
-        {JSON.stringify(widget)}
+        {/*{JSON.stringify(widget)}*/}
 
         {
             widget.editing &&
-            <div>
+            <div className="mb-3">
                 <h3>
                     Paragraph Widget
 
@@ -64,18 +64,19 @@ const ParagraphWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidg
 
             </div>
         }
-        {
-            !widget.editing &&
+
             <div>
                 <h3>
                     Preview ({widget.name})
-                    <button onClick={() => editWidget(widget)} className="btn btn-warning pull-right">
-                        <i className="fa fa-pencil"/>
-                    </button>
+                    {
+                        !widget.editing &&
+                        <button onClick={() => editWidget(widget)} className="btn btn-warning pull-right">
+                            <i className="fa fa-pencil"/>
+                        </button>
+                    }
                 </h3>
                 <p>{widget.text}</p>
             </div>
-        }
 
     </div>
 

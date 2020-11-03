@@ -14,8 +14,15 @@ export const updateWidget = (dispatch, widget) => {
 }
 
 
+// TODO:
+// export const moveUp = (dispatch, widget) =>
+//     dispatch({
+//         type: "WIDGET_POSITION_UP",
+//         widget: widget
+//     })
+
+
 export const deleteWidget = (dispatch, widget) => {
-    //dispatch({type: DELETE_WIDGET, widget})
     WidgetService.deleteWidget(widget.id)
         .then(status => dispatch({
             type: DELETE_WIDGET,
@@ -29,7 +36,6 @@ export const createWidgetForTopic = (dispatch, topicId) =>
     WidgetService.createWidgetForTopic(topicId)
         .then(widget => dispatch({
             type: CREATE_WIDGET,
-            //widget: widget,
             widget: {...widget, editing: true}
             //topicId: topicId
         }))
@@ -39,7 +45,6 @@ export const createWidgetForTopic = (dispatch, topicId) =>
 export const editWidget = (dispatch, widget) => {
     // pass the updated widget with editing status true
     // same as the update action type
-    //dispatch({type: UPDATE_WIDGET, widget: {...widget, editing: true}})
     WidgetService.updateWidget(widget.id, widget)
         .then(status => dispatch({
             type: UPDATE_WIDGET,
@@ -49,7 +54,6 @@ export const editWidget = (dispatch, widget) => {
 
 
 export const okWidget = (dispatch, widget) => {
-    //dispatch({type: UPDATE_WIDGET, widget: {...widget, editing: false}})
     WidgetService.updateWidget(widget.id, widget)
         .then(status => dispatch({
             type: UPDATE_WIDGET,

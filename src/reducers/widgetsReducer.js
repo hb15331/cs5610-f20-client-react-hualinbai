@@ -16,6 +16,7 @@ const widgetReducer = (state=initialState, action) => {
                 ]
                 //topicId: action.topicId
             }
+
         case UPDATE_WIDGET:
             return {
                 ...state,
@@ -29,11 +30,13 @@ const widgetReducer = (state=initialState, action) => {
                 ...state,
                 widgets: state.widgets.filter(widget => widget !== action.widget)
             }
+
         case FIND_ALL_WIDGETS:
             return {
                 ...state,
                 widgets: action.widgets
             }
+
         case FIND_WIDGETS_FOR_TOPIC:
             return {
                 ...state,

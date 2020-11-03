@@ -5,7 +5,8 @@ import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/ParagraphWidget";
 
 
-const WidgetList = ({widgets=[], createWidgetForTopic, deleteWidget, updateWidget, editWidget, okWidget, topicId}) =>
+const WidgetList = ({widgets=[], createWidgetForTopic, deleteWidget, updateWidget,
+                        editWidget, okWidget, topicId}) =>
     <div>
         <ul className="list-group">
 
@@ -14,7 +15,7 @@ const WidgetList = ({widgets=[], createWidgetForTopic, deleteWidget, updateWidge
                     // as we iterate, each list item should have a unique identifier
                     <li className="list-group-item" key={widget.id}>
 
-                        {console.log(widget.editing)}
+                        {/*{console.log(widget.editing)}*/}
 
                         {/*{   // if editing, shows the field, delete and ok button*/}
                         {/*    widget.editing &&*/}

@@ -3,12 +3,11 @@ import React from "react";
 const HeadingWidget = ({widget, deleteWidget, okWidget, updateWidget, editWidget}) =>
     <div>
 
-        {JSON.stringify(widget)}
+        {/*{JSON.stringify(widget)}*/}
 
         {
-            //true &&
             widget.editing &&
-            <div>
+            <div className="mb-3">
             <div className="row">
 
                 <div className="col-4">
@@ -17,7 +16,9 @@ const HeadingWidget = ({widget, deleteWidget, okWidget, updateWidget, editWidget
 
                 <div className="col-8">
                 <span className="pull-right form-inline">
-                    <button className="btn btn-warning">
+                    <button className="btn btn-warning"
+                            //onClick={() => moveUp(widget)}
+                    >
                         <i className="fa fa-arrow-up"/>
                     </button>
                     <button className="btn btn-warning">
@@ -67,7 +68,6 @@ const HeadingWidget = ({widget, deleteWidget, okWidget, updateWidget, editWidget
                     })}
                     value={widget.size}
             >
-                {/*<option value="1">Choose size</option>*/}
                 {/*<option value="">--Choose size--</option>*/}
                 <option value="1">Heading 1</option>
                 <option value="2">Heading 2</option>
@@ -89,14 +89,15 @@ const HeadingWidget = ({widget, deleteWidget, okWidget, updateWidget, editWidget
             </div>
         }
 
-        {
-            !widget.editing &&
             <div>
                 <h3>
                     Preview ({widget.name})
-                    <button onClick={() => editWidget(widget)} className="btn btn-warning pull-right">
-                        <i className="fa fa-pencil"/>
-                    </button>
+                    {
+                        !widget.editing &&
+                        <button onClick={() => editWidget(widget)} className="btn btn-warning pull-right">
+                            <i className="fa fa-pencil"/>
+                        </button>
+                    }
                 </h3>
 
                 {
@@ -125,7 +126,6 @@ const HeadingWidget = ({widget, deleteWidget, okWidget, updateWidget, editWidget
                 }
 
             </div>
-        }
 
     </div>
 
