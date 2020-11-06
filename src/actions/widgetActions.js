@@ -38,7 +38,7 @@ export const createWidgetForTopic = (dispatch, topicId) =>
             type: CREATE_WIDGET,
             //widget: {...widget, editing: true}
             // a new widget is in preview mode by default
-            widget: {...widget, editing: false}
+            widget: {...widget, editing: false, listType: "UNORDERED"}
         }))
 
 

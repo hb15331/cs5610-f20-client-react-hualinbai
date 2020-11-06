@@ -109,7 +109,7 @@ const propertyToDispatchMapper = (dispatch) => ({
             // initialize the editing status for widgets fetched from server
             // by default all widgets are in preview mode
             //widgets: widgets.map(widget => ({...widget, editing: true})),
-            widgets: widgets.map(widget => ({...widget, editing: false})),
+            widgets: widgets.map(widget => ({...widget, editing: false, listType: "UNORDERED"})),
             topicId: topicId
         })),
 
