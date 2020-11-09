@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import ModuleListComponent from "./ModuleListComponent";
 import {connect} from "react-redux";
 import {findModulesForCourse} from "../services/ModuleService";
-import {findLessonsForModule} from "../services/LessonService";
+import {deleteLesson, findLessonsForModule} from "../services/LessonService";
 import LessonTabsComponent from "./LessonTabsComponent";
 import {findTopicsForLesson} from "../services/TopicService";
 import TopicPillsComponent from "./TopicPillsComponent";
@@ -45,6 +45,8 @@ class CourseEditorComponent extends React.Component{
         if (topicId) {
             this.props.findWidgetsForTopic(topicId)
         }
+
+
     }
 
 

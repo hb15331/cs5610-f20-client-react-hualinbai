@@ -36,6 +36,7 @@ const HeadingWidget = ({widget, deleteWidget, okWidget, updateWidget, editWidget
                         <option value="HEADING">Heading</option>
                         <option value="PARAGRAPH">Paragraph</option>
                         <option value="LIST">List</option>
+                        <option value="IMAGE">Image</option>
                     </select>
 
                     <button className="btn btn-danger" onClick={() => deleteWidget(widget)}>

@@ -1,16 +1,14 @@
 import React from "react";
 
 
-const ListWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidget}) =>
+const ImageWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidget}) =>
     <div>
-
-        {/*{JSON.stringify(widget)}*/}
 
         {
             widget.editing &&
             <div className="mb-3">
                 <h3>
-                    List Widget
+                    Image Widget
                     <span className="pull-right form-inline">
                     <button className="btn btn-warning">
                         <i className="fa fa-arrow-up"/>
@@ -31,7 +29,6 @@ const ListWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidget}) 
                         <option value="PARAGRAPH">Paragraph</option>
                         <option value="LIST">List</option>
                         <option value="IMAGE">Image</option>
-
                     </select>
 
                     <button className="btn btn-danger" onClick={() => deleteWidget(widget)}>
@@ -40,31 +37,18 @@ const ListWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidget}) 
                     <button className="btn btn-primary" onClick={() => okWidget(widget)}>
                         Save
                     </button>
-                    </span>
-
+                </span>
                 </h3>
 
-                <textarea className="form-control mt-3"
-                          placeholder="Enter one list item per line"
-                          onChange={(event) =>
-                              updateWidget({
-                                  ...widget,
-                                  text: event.target.value
-                              })}
-                          value={widget.text}
+                <input className="form-control mt-3"
+                       placeholder="Image URL"
+                       onChange={(event) =>
+                           updateWidget({
+                               ...widget,
+                               url: event.target.value
+                           })}
+                       value={widget.url}
                 />
-
-                <select className="form-control mt-3"
-                        onChange={(event) =>
-                            updateWidget({
-                                ...widget,
-                                listType: event.target.value
-                            })}
-                        value={widget.listType}
-                >
-                    <option value="UNORDERED">Unordered list</option>
-                    <option value="ORDERED">Ordered list</option>
-                </select>
 
                 <input className="form-control mt-3"
                        placeholder="Widget name"
@@ -75,48 +59,28 @@ const ListWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidget}) 
                            })}
                        value={widget.name}
                 />
-
             </div>
-
         }
         <div>
             <h3>
                 Preview ({widget.name})
                 {
                     !widget.editing &&
-                    <button onClick={() => editWidget(widget)}
-                            className="btn btn-warning pull-right">
+                    <button onClick={() => editWidget(widget)} className="btn btn-warning pull-right">
                         <i className="fa fa-pencil"/>
                     </button>
                 }
+                <div className="mt-3">
+                    {/*<img src="http://lorempixel.com/300/150/"/>*/}
+                    <img src={widget.url}/>
+                </div>
+
             </h3>
-
-            {
-                widget.listType === "UNORDERED" &&
-                <ul>
-                    {
-                        widget.text.split("\n").map((rowString, index) =>
-                            <li key={index}>{rowString}</li>
-                        )
-                    }
-                </ul>
-            }
-            {
-                widget.listType === "ORDERED" &&
-                <ol>
-                    {
-                        widget.text.split("\n").map((rowString, index) =>
-                            <li key={index}>{rowString}</li>
-                        )
-                    }
-                </ol>
-
-            }
-
         </div>
 
     </div>
 
 
 
-export default ListWidget;
+
+export default ImageWidget;

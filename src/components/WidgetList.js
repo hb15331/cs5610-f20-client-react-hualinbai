@@ -4,6 +4,7 @@ import {createWidgetForTopic, deleteWidget, updateWidget, editWidget, okWidget} 
 import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/ParagraphWidget";
 import ListWidget from "./widgets/ListWidget";
+import ImageWidget from "./widgets/ImageWidget";
 
 
 const WidgetList = ({widgets=[], createWidgetForTopic, deleteWidget, updateWidget,
@@ -43,7 +44,15 @@ const WidgetList = ({widgets=[], createWidgetForTopic, deleteWidget, updateWidge
                                              editWidget={editWidget}
                             />
                         }
-
+                        {
+                            widget.type === "IMAGE" &&
+                            <ImageWidget widget={widget}
+                                        deleteWidget={deleteWidget}
+                                        okWidget={okWidget}
+                                        updateWidget={updateWidget}
+                                        editWidget={editWidget}
+                            />
+                        }
                     </li>
                 )
             }
