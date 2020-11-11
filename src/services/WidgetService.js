@@ -1,6 +1,9 @@
 
-const WIDGET_URL = "http://localhost:8080/api/widgets"
-const TOPIC_URL = "http://localhost:8080/api/topics" // base url for topics
+// const WIDGET_URL = "http://localhost:8080/api/widgets"
+// const TOPIC_URL = "http://localhost:8080/api/topics" // base url for topics
+
+const WIDGET_URL = "https://tranquil-fjord-93485.herokuapp.com/api/widgets"
+const TOPIC_URL = "https://tranquil-fjord-93485.herokuapp.com/api/topics" // base url for topics
 
 
 const findWidgetsForTopic = (topicId) =>
