@@ -58,9 +58,11 @@ const ListWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidget}) 
                         onChange={(event) =>
                             updateWidget({
                                 ...widget,
-                                listType: event.target.value
+                                ordered: event.target.value === "ORDERED"
+                                //listType: event.target.value
                             })}
-                        value={widget.listType}
+                        value={widget.ordered ? "ORDERED" : "UNORDERED"}
+                        //value={widget.listType}
                 >
                     <option value="UNORDERED">Unordered list</option>
                     <option value="ORDERED">Ordered list</option>
@@ -92,7 +94,8 @@ const ListWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidget}) 
             </h3>
 
             {
-                widget.listType === "UNORDERED" &&
+                !widget.ordered &&
+                //widget.listType === "UNORDERED" &&
                 <ul>
                     {
                         widget.text.split("\n").map((rowString, index) =>
@@ -102,7 +105,8 @@ const ListWidget = ({widget, deleteWidget, editWidget, okWidget, updateWidget}) 
                 </ul>
             }
             {
-                widget.listType === "ORDERED" &&
+                widget.ordered &&
+                //widget.listType === "ORDERED" &&
                 <ol>
                     {
                         widget.text.split("\n").map((rowString, index) =>

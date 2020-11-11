@@ -22,7 +22,8 @@ const createWidgetForTopic = (topicId) =>
             topicId: topicId,
             text: "",
             size: 1,
-            url: ""
+            url: "",
+            ordered: false
         }),
 
         headers: {
