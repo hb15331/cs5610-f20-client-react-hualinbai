@@ -1,6 +1,7 @@
 ## Description
 This repository maintains the code for the front end. 
-The Java server is maintained in the repository cs5610-f20-hualin-bai-server-java.
+The Java server is maintained in the repository:
+https://github.com/hb15331/cs5610-f20-hualin-bai-server-java
 
 Click the following link to run the full application on Heroku: 
 https://whiteboard2-bai.herokuapp.com/
