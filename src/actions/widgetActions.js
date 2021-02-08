@@ -46,7 +46,6 @@ export const createWidgetForTopic = (dispatch, topicId) =>
         }))
 
 
-
 export const editWidget = (dispatch, widget) => {
     // pass the updated widget with editing status true
     // same as the update action type
